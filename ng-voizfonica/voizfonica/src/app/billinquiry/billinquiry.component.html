@@ -9,24 +9,29 @@
                 <th style="text-align: center">Mobile no</th>
                 <th>:</th>
                 <td><input type="text" name="name"></td>
-            </tr>
-            <tr>
-                <th></th>
-                <th></th>
                 <td><button class="btn btn-secondary " style="min-width:15%;min-height:25%" (click)="fn()">Okay</button></td>
+            
             </tr>
             <tr>
-                   <td>
+                <th></th>
+                <th></th>
+                </tr>
+            <tr>
+                   <td colspan="4">
                         
-                    <table>
+                    <table style="text-align:left" class="table table-secondary">
                         <tr *ngFor="let b of bill_details">
                             <th>{{b.left}}</th>
                             <td>{{b.right}}</td>
                         </tr>
                         
                     </table>
+                    </td>
+                    </tr>
             
         </table>
+        <br>
+        <br>
     </div>
 
 </form>
