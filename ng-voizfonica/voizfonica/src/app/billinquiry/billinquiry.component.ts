@@ -10,7 +10,7 @@ bill_details:any[];
   constructor() { }
 
   ngOnInit() {
-    /*comment*/
+    /*comment1*/
   }
 
   fn(){
