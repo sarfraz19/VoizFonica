@@ -1,79 +1,30 @@
-/* Logo */
-.navbar-brand
-{
-    text-align: center;
-    padding-left:1%;
-    padding-right:1%;
-}
-
-/* Navbar Items */
-.nav-link
-{
-    color:#C5CACE !important;
-}
-
-.nav-link:hover,.nav-link:active,.nav-link:focus
-{
-    color:#eeeeee !important;
-}
-
-.nav-item a
-{
-    text-align:center;
-}
-
-.option:hover
-{
-    background: #8E979F
-}
-
-/* Gap between Navbar items */
-.text-secondary
-{
-    cursor:default;
-    line-height: 1%;
-    opacity:0;
-}
-
-/* Login Icon */
-.text-light
-{
-    font-size:25pt;
-    color:#C5CACE !important;
-}
-
-ul[type=none]
-{
-    margin:0;
-    padding:0;
-    text-align: center;
-}
-
-/* Carousel Images */
+/* Carousel */
 
 .container-fluid
 {
     padding:0;
 }
 
+/* Blur image */
 .bg
 {
-	position:absolute;
+    /* position:absolute;
 	left:0;
 	top:0;
 	width:100%;
 	height:100%;
-	background:rgba(163, 159, 153, 0.4);
+	background:rgba(163, 159, 153, 0.4); */
 }
 
+/* Center Image */
 img
 {    
-    /* Center Image */
     display: block;
     margin-left: auto;
     margin-right: auto;    
 }
 
+/* Adjust Image height */
 @media (min-width: 300px) {
     .carousel-item>img {
         height: 160px;
@@ -92,8 +43,79 @@ img
     }
 }
 
-.carousel-item
+/* About Us */
+.aboutus
+{
+    background: rgba(187,187,187,0.4);
+    padding:2% 7% 3% 7%;
+}
+
+p
+{
+    text-indent: 4%;
+}
+
+dl
+{
+    box-shadow: #999 10px 10px 10px;
+}
+
+dt
 {
     text-align: center;
-    font-size: 0;
+    text-transform: uppercase;
+    padding:2%;
+    background: #ff2262;
+    color:white;
+    font-size: 20pt;
+    font-weight: normal;
+}
+
+dd
+{
+    padding: 3% 7%;
+}
+
+dd ul li
+{
+    text-indent: 6%;
+}
+
+dd ul li span
+{
+    position: relative;
+    left:-4%;
+}
+
+/* Contact Us */
+.row
+{
+    text-align: center;
+    color:white;
+    font-size: 15pt;
+}
+
+.row div
+{
+    padding: 3% 0%;
+    cursor:pointer;
+}
+
+.fas,.far
+{
+    font-size: 40pt;
+    margin-bottom: 5%;
+}
+
+.btn-primary
+{
+    background: #0174CF;
+    border-width:0px 1px;
+    border-color:white;
+    border-style: solid;
+}
+
+.btn-primary:focus
+{
+    background: #0077CE;
 }
