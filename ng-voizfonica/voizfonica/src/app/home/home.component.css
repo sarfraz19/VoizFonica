@@ -5,13 +5,12 @@ table{
     height:100%;
     border-spacing:0;
 }
+.vertical tr td
+{
+    height:20%;
+}
 td{
     text-align:center;
-}
-.options td
-{
-    cursor:pointer;
-    margin:0;
 }
 .btn-secondary{
     width:100%;

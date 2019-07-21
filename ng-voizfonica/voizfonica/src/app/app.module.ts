@@ -19,6 +19,7 @@ import { FaqComponent } from './faq/faq.component';
 import { RorbComponent } from './rorb/rorb.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { Home1Component } from './home1/home1.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     BillinquiryComponent,
     ReportComponent,
     FaqComponent,
-    RorbComponent
+    RorbComponent,
+    Home1Component
   ],
   imports: [
     BrowserModule,
