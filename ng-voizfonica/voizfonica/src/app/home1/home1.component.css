@@ -117,7 +117,7 @@ dd ul li span
 .btn-primary
 {
     /* background: #0174CF; */
-    border-width:0px 1px;
+    border-width: 1px;
     border-color:white;
     border-style: solid;
 }
