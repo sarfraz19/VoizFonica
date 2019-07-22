@@ -64,11 +64,18 @@ dt
 {
     text-align: center;
     text-transform: uppercase;
-    padding:2%;
     background: #ff2262;
-    color:white;
-    font-size: 20pt;
+    color: #ff2262;
+    cursor:default;
+    font-size: 3pt;
     font-weight: normal;
+}
+
+.heading
+{
+    font-size:25pt;
+    font-weight: bold;
+    margin-bottom: 2%;
 }
 
 dd
@@ -109,7 +116,7 @@ dd ul li span
 
 .btn-primary
 {
-    background: #0174CF;
+    /* background: #0174CF; */
     border-width:0px 1px;
     border-color:white;
     border-style: solid;
@@ -117,5 +124,6 @@ dd ul li span
 
 .btn-primary:focus
 {
-    background: #0077CE;
+    /* background: #0077CE; */
+    background: #ff2262;
 }
