@@ -114,16 +114,11 @@ dd ul li span
     margin-bottom: 5%;
 }
 
-.btn-primary
+.bluebtn
 {
-    /* background: #0174CF; */
+    background: #007BFF; 
     border-width: 1px;
     border-color:white;
     border-style: solid;
-}
-
-.btn-primary:focus
-{
-    /* background: #0077CE; */
-    background: #ff2262;
+    cursor:default !important;
 }
