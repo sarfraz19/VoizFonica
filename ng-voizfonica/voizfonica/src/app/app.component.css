@@ -38,7 +38,6 @@
 
 .option:hover
 {
-    background: rgba(200,200,200,0.1);
     transform:scale(1.06);
 }
 
@@ -63,3 +62,12 @@ ul[type=none]
     padding:0;
     text-align: center;
 }
+
+@media(max-width:991px)
+{
+    .option:hover
+    {
+        background: rgba(200,200,200,0.1);
+    }   
+}
+    
