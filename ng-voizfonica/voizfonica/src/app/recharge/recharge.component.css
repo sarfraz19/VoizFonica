@@ -1,19 +1,37 @@
 table
 {
-width:100%;
+
+width:90%;
 height:100%;
 margin:0;
-padding:0;
+padding-left: 4%;
 }
-.jumbotron
+.container-fluid
 {
 margin:0;
+background-color: 	
+    rgba(255,34,98,0.6);
+    padding:3%;
 }
-
 td,th
 {
 	padding-top:6%;
 }
 .container{
     margin-left:3%;
+    padding:4%;
+}
+.hide
+{
+  width:0;
+  height:0;
+}
+
+@media(min-width:1000px)
+{
+  .hide
+  {
+    width:60%;
+    height:110%;
+  }
 }

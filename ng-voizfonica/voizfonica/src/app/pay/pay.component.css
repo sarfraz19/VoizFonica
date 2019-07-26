@@ -5,8 +5,11 @@ table {
     padding: 0;
 }
 
-.jumbotron {
+.container-fluid
+{
     margin: 0;
+    background-color: rgba(0,123,255,0.4);
+    padding:4%;
 }
 
 td,
@@ -16,4 +19,19 @@ th {
 
 .container {
     margin-left: 3%;
+    padding-top:4%;
+}
+.hide
+{
+  width:0;
+  height:0;
+}
+
+@media(min-width:1000px)
+{
+  .hide
+  {
+    width:80%;
+    height:90%;
+  }
 }
