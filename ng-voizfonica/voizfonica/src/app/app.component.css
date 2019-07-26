@@ -33,7 +33,13 @@
 
 .option:hover
 {
-    background: rgba(200,200,200,0.1)
+    transition-duration: 0.1s;
+}
+
+.option:hover
+{
+    background: rgba(200,200,200,0.1);
+    transform:scale(1.06);
 }
 
 /* Gap between Navbar items */
