@@ -5,15 +5,34 @@ height:100%;
 margin:0;
 padding:0;
 }
-.jumbotron
+.container-fluid
 {
-margin:0;
+    margin: 0;
+    background-color: 	
+    rgba(255,34,98,0.6);
+    padding:4%;
 }
-
 td,th
 {
-	padding-top:6%;
+    padding-top:6%;
+    float: auto;
 }
-.container{
-    margin-left:3%;
+.container
+{
+  padding:4%;  
+}
+
+.hide
+{
+  width:0;
+  height:0;
+}
+
+@media(min-width:1000px)
+{
+  .hide
+  {
+    width:100%;
+    height:100%;
+  }
 }
