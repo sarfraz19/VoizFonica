@@ -1,37 +1,86 @@
-table
+/* Heading */
+.jumb
 {
+  margin:0;
+  background-color:rgba(255,34,98,0.6);
+  padding:3%;
+  text-align:center;
+}
 
-width:90%;
-height:100%;
-margin:0;
-padding-left: 4%;
-}
-.container-fluid
+/* Body */
+.row
 {
-margin:0;
-background-color: 	
-    rgba(255,34,98,0.6);
-    padding:3%;
+  padding-top:2%;
+  text-align:center;
 }
-td,th
-{
-	padding-top:6%;
-}
-.container{
-    margin-left:3%;
-    padding:4%;
-}
+
+/* Image */
 .hide
 {
   width:0;
   height:0;
 }
 
-@media(min-width:1000px)
+/* Form */
+table
+{
+  width:80%;
+  margin:auto;
+  text-align:center;
+}
+
+td,th
+{
+  padding:5% 4%;
+}
+
+/* Text box */
+input
+{
+  margin:auto;
+  width:90%;
+  min-width:80px;
+  max-width:150px;
+}
+
+.nopad
+{
+  padding:0%;
+}
+
+/* Button */
+.btn
+{
+  width: 30%; 
+  min-height: 25%;
+  margin-left:7%;
+}
+
+
+@media(max-width:360px)
+{
+  .btn
+  {
+    margin-left:0%;
+  }
+}
+
+@media(min-width:768px)
 {
   .hide
   {
-    width:60%;
-    height:110%;
+    width:90%;
+    height:95%;
+    margin-left:20%;
+  }
+}
+
+@media(min-width:900px)
+{
+  .hide
+  {
+    width:88%;
+    height:100%;
+    margin-left:20%;
   }
 }
