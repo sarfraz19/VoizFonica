@@ -7,7 +7,7 @@
 
 /* Logo */
 .navbar-brand {
-  color: #ff2262 !important;
+  color: #007bff !important;
   text-align: center;
   padding-left: 1%;
   padding-right: 1%;
@@ -29,13 +29,13 @@
   text-align: center;
 }
 
-.option:hover {
+/* .option:hover {
   transition-duration: 0.1s;
-}
+} */
 
-.option:hover {
+/* .option:hover {
   transform: scale(1.06);
-}
+} */
 
 /* Gap between Navbar items */
 .text-secondary {

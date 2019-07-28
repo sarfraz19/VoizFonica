@@ -1,57 +1,59 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand option" href="#">VOIZFONICA</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<div class="container" style="margin: 0 0 56px 0;">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <a class="navbar-brand option" href="#">VOIZFONICA</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div
-    class="collapse navbar-collapse"
-    id="navbarSupportedContent"
-    style="text-align:center"
-  >
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item text-secondary">
-        hiiiiiiiiiiiiiii
-      </li>
-      <li class="nav-item option">
-        <a class="nav-link" routerLink="/plans">Plans Available</a>
-      </li>
-      <li class="nav-item text-secondary">
-        hiiiiiiiiiiiiiii
-      </li>
-      <li class="nav-item option">
-        <a class="nav-link" routerLink="/rorb">Recharge / Bill Payment</a>
-      </li>
-      <li class="nav-item text-secondary">
-        hiiiiiiiiiiiiiii
-      </li>
-      <li class="nav-item option">
-        <a class="nav-link" routerLink="/newcon">Get a new Connection</a>
-      </li>
-      <li class="nav-item text-secondary">
-        hiiiiiiiiiiiiiii
-      </li>
-      <li class="nav-item option">
-        <a class="nav-link" routerLink="/faq">Help and Support</a>
-      </li>
-    </ul>
-    <ul type="none">
-      <li class="nav-item option">
-        <a class="far fa-user nav-link" routerLink="/login"></a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      style="text-align:center"
+    >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item text-secondary">
+          hiiiiiiiiiiiiiii
+        </li>
+        <li class="nav-item option">
+          <a class="nav-link" routerLink="/plans">Plans Available</a>
+        </li>
+        <li class="nav-item text-secondary">
+          hiiiiiiiiiiiiiii
+        </li>
+        <li class="nav-item option">
+          <a class="nav-link" routerLink="/rorb">Recharge / Bill Payment</a>
+        </li>
+        <li class="nav-item text-secondary">
+          hiiiiiiiiiiiiiii
+        </li>
+        <li class="nav-item option">
+          <a class="nav-link" routerLink="/newcon">Get a new Connection</a>
+        </li>
+        <li class="nav-item text-secondary">
+          hiiiiiiiiiiiiiii
+        </li>
+        <li class="nav-item option">
+          <a class="nav-link" routerLink="/faq">Help and Support</a>
+        </li>
+      </ul>
+      <ul type="none">
+        <li class="nav-item option">
+          <a class="far fa-user nav-link" routerLink="/login"></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
 
-<div *ngIf="fn()" class="full">
+<div role="main" *ngIf="fn()" class="full">
   <app-home1></app-home1>
 </div>
 <router-outlet></router-outlet>
