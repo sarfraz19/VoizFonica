@@ -1,19 +1,46 @@
-<div style="height:80%">
-<div class="jumbotron jumbotron-fluid text-center align-content:center" style="background-color: #343a40;">
-    <h3 style="color: white;" class="h3">Create new Account</h3>
-</div>
-<div class="wrapper">
-<div id="formContent">
-  
-  <form>
-    <input type="text" name="" placeholder="User name">
-    <input type="text" name="" placeholder="Phone no">
-    <input type="password" name="" placeholder="Password">
-    <input type="password" name="" placeholder="Re-type Password">
-    <input type="button" class="like" value="Get OTP">
-    <input type="text" name="" placeholder="Enter otp">
-    <a routerLink='/login'><input type="submit" name="" value="Register"></a>
-  </form>   
-</div>
-</div>
+<div style="height:95%">
+  <div class="wrapper">
+    <div id="formContent">
+      <div class="">
+        <h3>New Account</h3>
+      </div>
+
+      <form>
+        <input type="text" name="" placeholder="User name" />
+        <input type="text" name="" placeholder="Phone no" />
+        <input type="password" name="" placeholder="Password" />
+        <input type="password" name="" placeholder="Re-type Password" />
+        <input
+          type="button"
+          class="btn"
+          value="Get OTP"
+          data-toggle="modal"
+          data-target="#myModal"
+        />
+      </form>
+    </div>
+
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div style="font-size:20pt;padding-bottom:2%">
+              <input type="text" name="" placeholder="Enter otp" />
+            </div>
+            <br />
+            <a routerLink="/login">
+              <button
+                type="button"
+                class="btn"
+                data-dismiss="modal"
+                style="color: white;"
+              >
+                Register
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
