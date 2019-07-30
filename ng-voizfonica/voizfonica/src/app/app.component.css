@@ -12,6 +12,7 @@
   padding-left: 1%;
   padding-right: 1%;
   font-weight: 400;
+  font-size:16pt;
 }
 
 /* Navbar Items */
@@ -29,13 +30,13 @@
   text-align: center;
 }
 
-/* .option:hover {
+.option{
   transition-duration: 0.1s;
-} */
+} 
 
-/* .option:hover {
+ .option:hover {
   transform: scale(1.06);
-} */
+}
 
 /* Gap between Navbar items */
 .text-secondary {
