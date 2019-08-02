@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateaccountComponent implements OnInit {
 
+  var1="hi";
+  name:string;
+  phone_num:string;
+  pw:string;
+  retype_pw:string;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  save(){
+    this.var1="hello";
   }
 
 }

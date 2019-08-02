@@ -2,14 +2,15 @@
   <div class="wrapper">
     <div id="formContent">
       <div class="">
-        <h3>New Account</h3>
+        <h3>New Account  {{var1}}</h3>
       </div>
 
-      <form>
-        <input type="text" name="" placeholder="Name" />
-        <input type="text" name="" placeholder="Phone no" />
-        <input type="password" name="" placeholder="Password" />
-        <input type="password" name="" placeholder="Re-type Password" />
+      <form (ngSubmit)="save()" #documentEditForm="ngForm">
+        <input type="text" name="name" placeholder="Name" [(ngModel)]="nameText" #name="ngModel" required/>
+        
+      <input type="text" name="phone_num" placeholder="Phone no" [(ngModel)]="phone_numText" required/>
+        <!--<input type="password" name="pw" placeholder="Password" [(ngModel)]="pw" #name="ngModel" required/>
+        <input type="password" name="retype_pw" placeholder="Re-type Password" [(ngModel)]="retype_pw" #name="ngModel" required/> -->
         <input
           type="button"
           class="btn"
@@ -17,6 +18,13 @@
           data-toggle="modal"
           data-target="#myModal"
         />
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert alert-danger">
+    
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div>
+        </div>
       </form>
     </div>
 
@@ -28,16 +36,16 @@
               <input type="text" name="" placeholder="Enter otp" />
             </div>
             <br />
-            <a routerLink="/login">
               <button
-                type="button"
+                type="submit"
                 class="btn"
                 data-dismiss="modal"
                 style="color: white;"
+                (click)="documentEditForm.ngSubmit.emit()"
+[disabled]="!documentEditForm.form.valid"
               >
                 Register
               </button>
-            </a>
           </div>
         </div>
       </div>

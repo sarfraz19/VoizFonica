@@ -19,7 +19,11 @@ import { FaqComponent } from './faq/faq.component';
 import { RorbComponent } from './rorb/rorb.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './api.service'
+
 import { Home1Component } from './home1/home1.component';
+import { Plans2Component } from './plans2/plans2.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import { Home1Component } from './home1/home1.component';
     ReportComponent,
     FaqComponent,
     RorbComponent,
-    Home1Component
+    Home1Component,
+    Plans2Component
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ import { Home1Component } from './home1/home1.component';
     HttpClientModule
     
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
