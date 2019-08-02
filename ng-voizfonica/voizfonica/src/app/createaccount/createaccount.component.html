@@ -2,15 +2,16 @@
   <div class="wrapper">
     <div id="formContent">
       <div class="">
-        <h3>New Account  {{var1}}</h3>
+        <h3>New Account</h3>
       </div>
 
-      <form (ngSubmit)="save()" #documentEditForm="ngForm">
-        <input type="text" name="name" placeholder="Name" [(ngModel)]="nameText" #name="ngModel" required/>
-        
-      <input type="text" name="phone_num" placeholder="Phone no" [(ngModel)]="phone_numText" required/>
-        <!--<input type="password" name="pw" placeholder="Password" [(ngModel)]="pw" #name="ngModel" required/>
-        <input type="password" name="retype_pw" placeholder="Re-type Password" [(ngModel)]="retype_pw" #name="ngModel" required/> -->
+      <form (ngSubmit)="save()" #regForm="ngForm">
+        <input type="text" name="name2" placeholder="Name" [(ngModel)]="name1" #name="ngModel" required/>
+       
+          <input type="text" name="phone_num2" placeholder="Phone no" [(ngModel)]="phone_num1" #phone_num="ngModel" phone required/>
+       
+        <input type="password" name="pw2" placeholder="Password" [(ngModel)]="pw1" #pw="ngModel" required/>
+        <input type="password" name="retype_pw2" placeholder="Re-type Password" [(ngModel)]="retype_pw1" #retype_pw="ngModel" required/>
         <input
           type="button"
           class="btn"
@@ -18,13 +19,18 @@
           data-toggle="modal"
           data-target="#myModal"
         />
-        <div *ngIf="name.invalid && (name.dirty || name.touched)"
-        class="alert alert-danger">
-    
-      <div *ngIf="name.errors.required">
-        Name is required.
-      </div>
+        :{{pw1}}:
+        <div *ngIf="pw1==''">
+          {{pw1}}s
         </div>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+          class="text-danger">
+      
+        <div *ngIf="name.errors.required">
+          Name is required.
+        </div>
+        
+          </div>
       </form>
     </div>
 
@@ -41,8 +47,8 @@
                 class="btn"
                 data-dismiss="modal"
                 style="color: white;"
-                (click)="documentEditForm.ngSubmit.emit()"
-[disabled]="!documentEditForm.form.valid"
+                (click)="regForm.ngSubmit.emit()"
+[disabled]="!regForm.form.valid"
               >
                 Register
               </button>

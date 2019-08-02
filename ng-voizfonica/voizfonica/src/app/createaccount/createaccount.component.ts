@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class CreateaccountComponent implements OnInit {
 
   var1="hi";
-  name:string;
-  phone_num:string;
-  pw:string;
-  retype_pw:string;
+  name1:string;
+  phone_num1:string;
+  pw1:string;
+  retype_pw1:string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
