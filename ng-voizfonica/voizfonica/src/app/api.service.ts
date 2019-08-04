@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.post<any>(this.baseUrl+'onlineusers/',details,
     {headers:this.httpHeaders}
     );
+    // const details1={username:pn,password:pw};
+    // return this.http.post<any>(this.baseUrl+'users/',details1,
+    // {headers:this.httpHeaders}
+    // );
   }
 
   // getOnlineUsers():Observable<any>
