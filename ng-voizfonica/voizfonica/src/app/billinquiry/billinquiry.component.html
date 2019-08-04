@@ -6,10 +6,16 @@
     <div class="container text-center">
         <table>
             <tr>
-                <th style="text-align: center">Mobile no</th>
+                <th style="text-align: center">Duration-From</th>
                 <th>:</th>
-                <td><input type="text" name="name"></td>
-                <td><button class="btn btn-info" style="min-width:15%;min-height:25%" (click)="fn()">Okay</button></td>
+                <td><input type="date" style="align-items: stretch"/></td>
+            
+            </tr>
+            <tr>
+                <th style="text-align: center">Duration-To</th>
+                <th>:</th>
+                <td><input type="date" style="align-items:stretch"/></td>
+                <td><button class="btn btn-info" (click)="fn()">Okay</button></td>
             
             </tr>
             <tr>
@@ -19,7 +25,7 @@
             <tr>
                    <td colspan="4">
                         
-                    <table style="text-align:left" class="table table-secondary">
+                    <table  class="table1">
                         <tr *ngFor="let b of bill_details">
                             <th>{{b.left}}</th>
                             <td>{{b.right}}</td>
