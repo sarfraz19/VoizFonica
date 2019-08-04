@@ -13,10 +13,10 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  // getPlans():Observable<Plans[]>
-  // {
-  //   return this.http.get<Plans[]>(this.baseUrl+'plans/',{
-  //     headers:this.httpHeaders
-  //   });
-  // }
+  getOnlineUsers():Observable<any>
+  {
+    return this.http.get<any>(this.baseUrl+'onlineusers/',{
+      headers:this.httpHeaders
+    });
+  }
 }
