@@ -19,7 +19,7 @@ import { FaqComponent } from './faq/faq.component';
 import { RorbComponent } from './rorb/rorb.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ApiService } from './api.service'
+import { ApiService } from './api.service';
 
 import { Home1Component } from './home1/home1.component';
 // import { Plans2Component } from './plans2/plans2.component';

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-createaccount',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./createaccount.component.css']
 })
 export class CreateaccountComponent implements OnInit {
+  // onlineusers =[];
+  // selected_ou={name:'',phone_num:'',pw:'',retype_pw:''};
 
   var1="hi";
   isBtnClicked=false;
@@ -15,15 +18,37 @@ export class CreateaccountComponent implements OnInit {
   pw_var:string;
   retype_pw_var:string;
 
-  constructor() {}
+  constructor(private apiService:ApiService) {}
 
   ngOnInit() {
+    // this.apiService.getOnlineUsers().subscribe(data=>(this.onlineusers=data));
   }
 
   save(){
-    this.var1="hello";
+    this.apiService.createNewUser(this.name_var,this.phone_num_var,this.pw_var,this.retype_pw_var).subscribe(data=>(true));
   }
 
+  // select(id)
+  // {
+  //   this.apiService.getOnlineUserDetails(id).subscribe(data=>(this.selected_ou=data));    
+  // }
+
+  // create(ou)
+  // {
+  //   this.apiService.createOnlineUser(ou).subscribe(data=>(this.onlineusers.push(data),this.selected_ou=data));    
+  // }
+
+  // update(ou)
+  // {
+  //   this.apiService.updateOnlineUser(ou).subscribe(data=>(this.onlineusers[this.onlineusers.map(function(x){return x.id;}).indexOf(data.id)]=data));
+  //   // It is easier to create a getOnlineUsers() function in this file and call it.
+  // }
+
+  // delete(id)
+  // {
+  //   this.apiService.deleteOnlineUser(id).subscribe(data=>(this.onlineusers.splice(this.onlineusers.map(function(x){return x.id;}).indexOf(id),1),this.selected_ou={name:'',phone_num:'',pw:'',retype_pw:''}));
+  // }
+  
   name_match(str):boolean
   {
     if(str!=null && str!='')

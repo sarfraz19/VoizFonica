@@ -9,14 +9,52 @@ import { Observable } from 'rxjs';
 export class ApiService {
   
   private baseUrl='http://localhost:8000/';
-  httpHeaders=new HttpHeaders({'content-type':'application/json'})
+  httpHeaders=new HttpHeaders({'content-type':'application/json'});
 
   constructor(private http:HttpClient) { }
 
-  getOnlineUsers():Observable<any>
+  createNewUser(n,pn,pw,r):Observable<any>
   {
-    return this.http.get<any>(this.baseUrl+'onlineusers/',{
-      headers:this.httpHeaders
-    });
+    const details={name:n,phone_num:pn,pw:pw,retype_pw:r};
+    return this.http.post<any>(this.baseUrl+'onlineusers/',details,
+    {headers:this.httpHeaders}
+    );
   }
+
+  // getOnlineUsers():Observable<any>
+  // {
+  //   return this.http.get<any>(this.baseUrl+'onlineusers/',
+  //   {headers:this.httpHeaders}
+  //   );
+  // }
+
+  // getOnlineUserDetails(id):Observable<any>
+  // {
+  //   return this.http.get<any>(this.baseUrl+'onlineusers/'+id+'/',
+  //   {headers:this.httpHeaders}
+  //   );
+  // }
+
+  // createOnlineUser(ou):Observable<any>
+  // {
+  //   const details={name:ou.name,phone_num:ou.phone_num,pw:ou.pw,retype_pw:ou.retype_pw};
+  //   return this.http.post<any>(this.baseUrl+'onlineusers/',details,
+  //   {headers:this.httpHeaders}
+  //   );
+  // }
+
+  // updateOnlineUser(ou):Observable<any>
+  // {
+  //   const details={name:ou.name,phone_num:ou.phone_num,pw:ou.pw,retype_pw:ou.retype_pw};
+  //   return this.http.put<any>(this.baseUrl+'onlineusers/'+ou.id+'/',details,
+  //   {headers:this.httpHeaders}
+  //   );
+  // }
+
+  // deleteOnlineUser(id):Observable<any>
+  // {
+  //   return this.http.delete<any>(this.baseUrl+'onlineusers/'+id+'/',
+  //   {headers:this.httpHeaders}
+  //   );
+  // }
 }
