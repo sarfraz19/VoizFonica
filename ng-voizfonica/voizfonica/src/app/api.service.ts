@@ -20,12 +20,25 @@ export class ApiService {
     );
   }
 
+  checkIsCustomer(pn):Observable<any>
+  {
+    return this.http.get<any>(this.baseUrl+'customersbynum/'+pn+'/',
+    {headers:this.httpHeaders}
+    );
+  }
+
   checkUserPresent(pn):Observable<any>
   {
   //   const details={username:pn,password:pw,first_name:n};
     return this.http.get<any>(this.baseUrl+'usersbyname/'+pn+'/',
     {headers:this.httpHeaders}
     );
+  }
+
+  loginUser(authData)
+  {
+    const body=JSON.stringify(authData);
+    return this.http.post(this.baseUrl+'auth/',body,{headers:this.httpHeaders});
   }
 
   // getOnlineUsers():Observable<any>

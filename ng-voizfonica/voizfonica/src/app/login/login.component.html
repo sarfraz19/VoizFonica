@@ -4,12 +4,11 @@
       <h3>Voizfonica</h3>
     </div>
 
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <input
         type="text"
         placeholder="Phone Number"
         name="ph"
-        [(ngModel)]="login.ph"
         phone
         required
         #ph1
@@ -19,7 +18,6 @@
         type="password"
         placeholder="Password"
         name="pw"
-        [(ngModel)]="login.pw"
         #pw1
       />
 
@@ -34,14 +32,14 @@
         />
       </a>
 
-      <a routerLink="/postpaid">
+      <!-- <a routerLink="/postpaid"> -->
         <input
-          type="button"
+          type="submit"
           class="btn"
           (click)="onSubmit(login)"
           value="Login (Postpaid)"
         />
-      </a>
+      <!-- </a> -->
 
       <div class="modal fade" id="myModal">
         <div class="modal-dialog">

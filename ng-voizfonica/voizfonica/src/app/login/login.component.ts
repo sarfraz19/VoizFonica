@@ -27,13 +27,18 @@ export class LoginComponent implements OnInit {
     this.loginForm=new FormGroup({
       username:new FormControl(''),
       password:new FormControl('')
-    })
-  }
-
-  onSubmit(l):void{
-    this.configService.getConfig()
-    .subscribe((data) =>  {
-        console.log(data);
     });
   }
+
+  onSubmit():void{
+    this.apiService.loginUser(this.loginForm.value).subscribe(data=>this.router.navigate(['/plans']));
+    console.log(this.loginForm.value);
+  }
+
+  // onSubmit(l):void{
+  //   this.configService.getConfig()
+  //   .subscribe((data) =>  {
+  //       console.log(data);
+  //   });
+  // }
 }

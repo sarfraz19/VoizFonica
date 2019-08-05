@@ -18,7 +18,8 @@ export class CreateaccountComponent implements OnInit {
   pw_var:string;
   retype_pw_var:string;
 
-  present=false;
+  isCustomer=true;
+  isAlreadyPresent:boolean;
 
   constructor(private apiService:ApiService) {}
 
@@ -28,9 +29,16 @@ export class CreateaccountComponent implements OnInit {
 
   check()
   {
-    this.present=false;
     this.isBtnClicked=true;
-    this.apiService.checkUserPresent(this.phone_num_var).subscribe(data=>(this.present=true));
+
+    this.apiService.checkIsCustomer(this.phone_num_var).subscribe(
+      data=>(this.isCustomer=true),
+      error=>(this.isCustomer=false)
+      );
+
+    this.apiService.checkUserPresent(this.phone_num_var).subscribe(
+      data=>(this.isAlreadyPresent=true),
+      error=>(this.isAlreadyPresent=false));
   }
 
   save(){
