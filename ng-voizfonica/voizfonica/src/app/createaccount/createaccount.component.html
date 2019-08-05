@@ -54,9 +54,13 @@
           type="button" 
           class="btn" 
           value="Get OTP" 
-          (click)="isBtnClicked=true"
+          (click)="check()"
           data-toggle="modal" 
           data-target="#myModal"/>
+
+          <div *ngIf="present" class="alert alert-danger">
+            You already have an account<br>Go to login page
+          </div>
 
       </form>
     </div>
@@ -96,6 +100,8 @@
 <input type="text" [(ngModel)]="selected_ou.phone_num"/>
 <input type="text" [(ngModel)]="selected_ou.pw"/>
 <input type="text" [(ngModel)]="selected_ou.retype_pw"/>
+
+
 <input type="button" value="Create" (click)="create(selected_ou)">
 <input type="button" value="Update" (click)="update(selected_ou)">
-<input type="button" value="Delete" (click)="delete(selected_ou.id)"> -->
+<input type="button" value="Delete" (click)="delete(selected_ou.id)">  -->

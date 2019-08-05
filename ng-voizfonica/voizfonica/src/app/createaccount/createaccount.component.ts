@@ -18,14 +18,23 @@ export class CreateaccountComponent implements OnInit {
   pw_var:string;
   retype_pw_var:string;
 
+  present=false;
+
   constructor(private apiService:ApiService) {}
 
   ngOnInit() {
     // this.apiService.getOnlineUsers().subscribe(data=>(this.onlineusers=data));
   }
 
+  check()
+  {
+    this.present=false;
+    this.isBtnClicked=true;
+    this.apiService.checkUserPresent(this.phone_num_var).subscribe(data=>(this.present=true));
+  }
+
   save(){
-    this.apiService.createNewUser(this.name_var,this.phone_num_var,this.pw_var,this.retype_pw_var).subscribe(data=>(true));
+    this.apiService.createNewUser(this.name_var,this.phone_num_var,this.pw_var).subscribe(data=>(true));
   }
 
   // select(id)
@@ -53,7 +62,7 @@ export class CreateaccountComponent implements OnInit {
   {
     if(str!=null && str!='')
     {
-      str=str.trim()
+      str=str.trim();
       var reg=new RegExp('^[a-zA-Z\ ]+$');
       var name_val=reg.test(str); 
       return name_val;

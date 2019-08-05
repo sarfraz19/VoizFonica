@@ -110,6 +110,10 @@ input[type="number"]:placeholder {
 {
     padding-top:2%;
 }
+.alert
+{
+    margin-top:4%;
+}
 
 .jumbotron {
     padding: 2%;

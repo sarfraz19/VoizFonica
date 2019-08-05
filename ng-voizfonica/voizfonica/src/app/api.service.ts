@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders,HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { Plans } from './plans';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +12,20 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
 
-  createNewUser(n,pn,pw,r):Observable<any>
+  createNewUser(n,pn,pw):Observable<any>
   {
-    const details={name:n,phone_num:pn,pw:pw,retype_pw:r};
-    return this.http.post<any>(this.baseUrl+'onlineusers/',details,
+    const details={username:pn,password:pw,first_name:n};
+    return this.http.post<any>(this.baseUrl+'users/',details,
     {headers:this.httpHeaders}
     );
-    // const details1={username:pn,password:pw};
-    // return this.http.post<any>(this.baseUrl+'users/',details1,
-    // {headers:this.httpHeaders}
-    // );
+  }
+
+  checkUserPresent(pn):Observable<any>
+  {
+  //   const details={username:pn,password:pw,first_name:n};
+    return this.http.get<any>(this.baseUrl+'usersbyname/'+pn+'/',
+    {headers:this.httpHeaders}
+    );
   }
 
   // getOnlineUsers():Observable<any>

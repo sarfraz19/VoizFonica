@@ -1,18 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonServiceService } from '../common-service.service';
 
+import { FormGroup ,FormControl } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-login:any=[];
-answer:string;
-i:number;
-  constructor(private configService:CommonServiceService) { }
+  login:any=[];
+  answer:string;
+  i:number;
+
+  loginForm:FormGroup;
+
+  constructor(
+    private configService:CommonServiceService,
+    private apiService:ApiService,
+    private router:Router
+    ) { }
 
   ngOnInit() {
+    this.loginForm=new FormGroup({
+      username:new FormControl(''),
+      password:new FormControl('')
+    })
   }
 
   onSubmit(l):void{
