@@ -99,7 +99,8 @@ input[type="password"] {
   color: #0d0d0d; */
   padding: 10px;
   font-size: 16px;
-  margin-bottom: 5%;
+  margin: 2.5% 0;
+  width:85%;
   /* text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -109,7 +110,7 @@ input[type="password"] {
   border: 2px solid #f6f6f6; */
 }
 
-.txt,
+.txt:focus,
 input[type="email"]:focus,
 input[type="number"]:focus,
 input[type="text"]:focus,
@@ -118,7 +119,6 @@ input[type="password"]:focus {
   border-bottom: 2px solid #ff2262;
 }
 
-.txt,
 input[type="email"]:placeholder,
 input[type="number"]:placeholder,
 input[type="text"]:placeholder,
@@ -141,6 +141,7 @@ input[type="number"]::-webkit-inner-spin-button{
 .btn {
   background: #ff2262;
 }
+
 .text-danger{
   text-align: center;
   width: 85%;
