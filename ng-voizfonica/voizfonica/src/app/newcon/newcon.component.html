@@ -1,109 +1,100 @@
 <div class="container-fluid jumb">
   <h1 class="display-4">GET A NEW CONNECTION</h1>
 </div>
+
 <div class="container">
-<form>
-  <div class="row">
-    <div class="col-md-6">
-      <input type="text" placeholder="Name" />
-    </div>
-    <div class="col-md-6">
-        <input type="text" placeholder="Select number" />
-    </div>
-  </div>
-  <br />
-  <div class="row">
-    <div class="col-md-6">
-      <input type="text" placeholder="Address" />
-    </div>
-    <div class="col-md-6">
-        <select class="txt">
-            <option value="volvo">Prepaid or postpaid</option>
-            <option value="saab">prepaid</option>
-            <option value="opel">postpaid</option>
-          </select>
-    </div>
-  </div>
-  <br />
-  <div class="row">
-    <div class="col-md-6">
-      <input type="text" placeholder="Pincode" />
-    </div>
-    <div class="col-md-6">
-        <select class="txt">
-            <option value="volvo">Select a plan</option>
-            <option value="saab">plan 1</option>
-            <option value="opel">plan 2</option>
-          </select>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-6 ">
-        <input type="text" placeholder="E-mail ID" />
-    </div>
-    <div class="col-md-6">
-        <div class="input-group mb-3 kyc">
-            <div class="input-group-prepend">
-              <span class="input-group-text">KYC Appointment</span>
-            </div>
-            <input type="date" style="width:57%" />
+{{preposdon_var}}|{{selectplan_var}}
+  <form>
+    <div class="row">
+      <div class="col-md-6">
+        
+        <input type="text" name="name1" placeholder="Name" [(ngModel)]="name_var" #name="ngModel" required />
+        <div *ngIf="name.invalid && (name.dirty || name.touched || isBtnClicked)" class="text-danger">
+
+          <div *ngIf="name.errors.required">
+            Name is required
           </div>
+
+        </div>
+        <div *ngIf="!name_match(name_var)" class="text-danger">
+          Name can contain only alphabets
+        </div>
+
+        <input type="text" name="address1" placeholder="Address" [(ngModel)]="address_var" #address="ngModel"
+          required />
+        <div *ngIf="address.invalid && (address.dirty || address.touched || isBtnClicked)" class="text-danger">
+
+          <div *ngIf="address.errors.required">
+            Address is required
+          </div>
+
+        </div>
+
+        <input type="number" name="pincode1" placeholder="Pincode" [(ngModel)]="pincode_var" #pincode="ngModel"
+          required />
+        <div *ngIf="pincode.invalid && (pincode.dirty || pincode.touched || isBtnClicked)" class="text-danger">
+
+          <div *ngIf="pincode.errors.required">
+            Pincode is required
+          </div>
+
+        </div>
+        <div *ngIf="(pincode.touched || isBtnClicked) && !pincode_match(pincode_var)" class="text-danger">
+            Enter a valid pincode 
+          </div> 
+  
+
+        <input type="text" name="emailid1" placeholder="E-mail ID" [(ngModel)]="email_var" #email="ngModel"  required />
+        <div *ngIf="email.invalid && (email.touched || isBtnClicked)" class="text-danger">
+
+          <div *ngIf="email.errors.required">
+            Email is required
+          </div>
+
+        </div>
+        <div *ngIf="(email.touched || isBtnClicked) && !email_match(email_var)" class="text-danger">
+            Enter a valid email address
+          </div> 
+
+      </div>
+
+      <div class="col-md-6">
+
+        <input type="number" name="selectnum1" placeholder="Select number" [(ngModel)]="selectnum_var"
+          #selectnum="ngModel" />
+
+        <select class="txt" name="preposdon1" [(ngModel)]="preposdon_var" #preposdon="ngModel" required>
+          <option [ngValue]="none" disabled>Select an option</option>
+          <option *ngFor="let o of options" [ngValue]="o">{{o}}</option>
+        </select>
+
+        <select class="txt" name="selectplan1" [(ngModel)]="selectplan_var" #selectplan="ngModel">
+          <option [ngValue]="plan1">plan 1</option>
+          <option [ngValue]="plan2">plan 2</option>
+        </select>
+
+        <div class="input-group mb-3 kyc">
+          <div class="input-group-prepend">
+            <span class="input-group-text">KYC Appointment</span>
+          </div>
+          <input type="date" name="kycdate1" [(ngModel)]="kycdate_var" #kycdate="ngModel" required style="width:57%" />
+          <div *ngIf="kycdate.invalid && (kycdate.dirty || kycdate.touched || isBtnClicked)" class="text-danger">
+            <div *ngIf="kycdate.errors.required">
+              Pick a Date
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <br />
-  <hr />
-  <div class="row text-center">
-    <div class="col-md-6"></div>
-    <div class="col-md-6">
-      <a routerLink="/pay"><input type="button" value="Proceed to Pay"/></a>
+    <hr />
+
+    <div class="row text-center">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <!-- <a routerLink="/pay"> -->
+          <input type="button" value="Proceed to Pay" (click)="check_valid()"/>
+        <!-- </a> -->
+      </div>
     </div>
-  </div>
-
-  <!-- <table class="table table-borderless">
-        <tr>
-            <th>Name</th>
-            <th>:</th>
-            <td><input type="text" name="" /></td>
-
-            <th>Phone no</th>
-            <th>:</th>
-            <td><input type="text" name="" /></td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <th>:</th>
-            <td><textarea style="width: 180px;"></textarea></td>
-            <th>Email Id</th>
-            <th>:</th>
-            <td><input type="text" name="" /></td>
-            <td></td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <th>Pincode</th>
-            <th>:</th>
-            <td><input type="text" name="" /></td>
-            <th>Appoinment for KYC</th>
-            <th>:</th>
-            <td>
-                <input type="date" name="" />
-            </td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="align-content: center ;padding:20px">
-                <a routerLink="/pay"><button class="btn btn-secondary">Proceed to Pay</button></a
-        >
-      </td>
-    </tr>
-  </table> -->
-</form>
+  </form>
 </div>
