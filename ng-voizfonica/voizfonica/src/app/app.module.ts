@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 
 import { Home1Component } from './home1/home1.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+//import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 // import { Plans2Component } from './plans2/plans2.component';
 
 
@@ -44,7 +44,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     FaqComponent,
     RorbComponent,
     Home1Component,
-    PagenotfoundComponent,
+    //PagenotfoundComponent,
     // Plans2Component
   ],
   imports: [
