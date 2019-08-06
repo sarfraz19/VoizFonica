@@ -2,12 +2,13 @@
   <h1 class="display-4">GET A NEW CONNECTION</h1>
 </div>
 
-<div class="container">
-{{preposdon_var}}|{{selectplan_var}}
+<div class="container">  
+  <div *ngIf="getDateTime()">
+  </div>
   <form>
     <div class="row">
       <div class="col-md-6">
-        
+
         <input type="text" name="name1" placeholder="Name" [(ngModel)]="name_var" #name="ngModel" required />
         <div *ngIf="name.invalid && (name.dirty || name.touched || isBtnClicked)" class="text-danger">
 
@@ -40,12 +41,12 @@
 
         </div>
         <div *ngIf="(pincode.touched || isBtnClicked) && !pincode_match(pincode_var)" class="text-danger">
-            Enter a valid pincode 
-          </div> 
-  
+          Enter a valid pincode
+        </div>
 
-        <input type="text" name="emailid1" placeholder="E-mail ID" [(ngModel)]="email_var" #email="ngModel"  required />
-        <div *ngIf="email.invalid && (email.touched || isBtnClicked)" class="text-danger">
+
+        <input type="text" name="emailid1" placeholder="E-mail ID" [(ngModel)]="email_var" #email="ngModel" required />
+        <div *ngIf="email.invalid && (email.dirty || email.touched || isBtnClicked)" class="text-danger">
 
           <div *ngIf="email.errors.required">
             Email is required
@@ -53,36 +54,59 @@
 
         </div>
         <div *ngIf="(email.touched || isBtnClicked) && !email_match(email_var)" class="text-danger">
-            Enter a valid email address
-          </div> 
+          Enter a valid email address
+        </div>
 
       </div>
 
       <div class="col-md-6">
 
-        <input type="number" name="selectnum1" placeholder="Select number" [(ngModel)]="selectnum_var"
+        <input type="number" name="selectnum1" placeholder="Select your phone number" [(ngModel)]="selectnum_var"
           #selectnum="ngModel" />
+
+        <div *ngIf="(selectnum.touched || isBtnClicked) && !selectnum_match(selectnum_var)" class="text-danger">
+          Enter a valid phone number
+        </div>
 
         <select class="txt" name="preposdon1" [(ngModel)]="preposdon_var" #preposdon="ngModel" required>
           <option [ngValue]="none" disabled>Select an option</option>
           <option *ngFor="let o of options" [ngValue]="o">{{o}}</option>
         </select>
+        <div *ngIf="preposdon.invalid && (preposdon.touched || isBtnClicked)" class="text-danger">
 
-        <select class="txt" name="selectplan1" [(ngModel)]="selectplan_var" #selectplan="ngModel">
-          <option [ngValue]="plan1">plan 1</option>
-          <option [ngValue]="plan2">plan 2</option>
+          <div *ngIf="preposdon.errors.required">
+            Select an option
+          </div>
+
+        </div>
+
+        <select class="txt" name="selectplan1" [(ngModel)]="selectplan_var" #selectplan="ngModel" required>
+          <option [ngValue]="none" disabled>Select a plan</option>
+          <option *ngFor="let p of plans" [ngValue]="p">{{p}}</option>
         </select>
+        <div *ngIf="selectplan.invalid && (selectplan.touched || isBtnClicked)" class="text-danger">
+
+          <div *ngIf="selectplan.errors.required">
+            Select a plan
+          </div>
+
+        </div>
 
         <div class="input-group mb-3 kyc">
           <div class="input-group-prepend">
             <span class="input-group-text">KYC Appointment</span>
           </div>
-          <input type="date" name="kycdate1" [(ngModel)]="kycdate_var" #kycdate="ngModel" required style="width:57%" />
+          <input type="date" class="form-control" name="kycdate1" [(ngModel)]="kycdate_var" #kycdate="ngModel" required style="width:57%" />
           <div *ngIf="kycdate.invalid && (kycdate.dirty || kycdate.touched || isBtnClicked)" class="text-danger">
             <div *ngIf="kycdate.errors.required">
               Pick a Date
             </div>
           </div>
+
+          <div *ngIf="(kycdate.touched || isBtnClicked) && !kycdate_match(kycdate_var)" class="text-danger">
+            Pick a valid date
+          </div>
+
         </div>
       </div>
     </div>
@@ -92,9 +116,12 @@
       <div class="col-md-6"></div>
       <div class="col-md-6">
         <!-- <a routerLink="/pay"> -->
-          <input type="button" value="Proceed to Pay" (click)="check_valid()"/>
+        <input type="button" value="Proceed to Pay" (click)="check_valid()" />
         <!-- </a> -->
       </div>
     </div>
   </form>
+  <!-- <div *ngIf="sub">
+    Submitted
+  </div> -->
 </div>
