@@ -7,7 +7,7 @@
       <input type="text" placeholder="Name" />
     </div>
     <div class="col-md-6">
-      <input type="text" placeholder="Phone no" />
+        <input type="text" placeholder="Select number" />
     </div>
   </div>
   <br />
@@ -16,7 +16,11 @@
       <input type="text" placeholder="Address" />
     </div>
     <div class="col-md-6">
-      <input type="text" placeholder="E-mail ID" />
+        <select class="txt">
+            <option value="volvo">Prepaid or postpaid</option>
+            <option value="saab">prepaid</option>
+            <option value="opel">postpaid</option>
+          </select>
     </div>
   </div>
   <br />
@@ -25,14 +29,28 @@
       <input type="text" placeholder="Pincode" />
     </div>
     <div class="col-md-6">
-      <div class="input-group mb-3 kyc">
-        <div class="input-group-prepend">
-          <span class="input-group-text">KYC Appointment</span>
-        </div>
-        <input type="date" style="width:57%" />
-      </div>
+        <select class="txt">
+            <option value="volvo">Select a plan</option>
+            <option value="saab">plan 1</option>
+            <option value="opel">plan 2</option>
+          </select>
     </div>
   </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6 ">
+        <input type="text" placeholder="E-mail ID" />
+    </div>
+    <div class="col-md-6">
+        <div class="input-group mb-3 kyc">
+            <div class="input-group-prepend">
+              <span class="input-group-text">KYC Appointment</span>
+            </div>
+            <input type="date" style="width:57%" />
+          </div>
+    </div>
+  </div>
+  <br />
   <hr />
   <div class="row text-center">
     <div class="col-md-6"></div>

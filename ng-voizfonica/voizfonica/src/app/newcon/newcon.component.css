@@ -131,3 +131,5 @@ input[type="password"]:placeholder {
 .btn {
   background: #ff2262;
 }
+
+select { width: 400px; text-align-last:center; }
