@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonServiceService } from '../common-service.service';
 
-import { FormGroup ,FormControl } from '@angular/forms';
+// import { FormGroup ,FormControl } from '@angular/forms';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,25 +15,25 @@ export class LoginComponent implements OnInit {
   answer:string;
   i:number;
 
-  loginForm:FormGroup;
+  // loginForm:FormGroup;
 
   constructor(
     private configService:CommonServiceService,
     private apiService:ApiService,
-    private router:Router
+    // private router:Router
     ) { }
 
   ngOnInit() {
-    this.loginForm=new FormGroup({
-      username:new FormControl(''),
-      password:new FormControl('')
-    });
+    // this.loginForm=new FormGroup({
+    //   username:new FormControl(''),
+    //   password:new FormControl('')
+    // });
   }
 
-  onSubmit():void{
-    this.apiService.loginUser(this.loginForm.value).subscribe(data=>this.router.navigate(['/plans']));
-    console.log(this.loginForm.value);
-  }
+  // onSubmit():void{
+  //   this.apiService.loginUser(this.loginForm.value).subscribe(data=>this.router.navigate(['/plans']));
+  //   console.log(this.loginForm.value);
+  // }
 
   // onSubmit(l):void{
   //   this.configService.getConfig()
