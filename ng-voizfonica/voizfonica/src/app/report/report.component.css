@@ -28,7 +28,8 @@
   margin-top:0;
   margin-bottom:3%;
   box-shadow: 0 13px 30px 0 rgba(0,0,0,0.3);
-  background-color: rgba(238, 4, 4, 0.6);
+  /* background-color:  #117A8B; */
+  background-color: rgba(34, 125, 185, 0.6);
 }
 .container
 {
