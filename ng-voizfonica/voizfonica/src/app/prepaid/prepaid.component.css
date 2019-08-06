@@ -40,8 +40,8 @@ html {
   flex: 1 1 auto;
 }
 
-.btn{
-  background:#52beff;
+.btn {
+  background: #52beff;
   /* text-transform:uppercase;  */
   border: none;
   color: white;
@@ -51,21 +51,37 @@ html {
   display: inline-block;
   font-size: 13px;
   -webkit-box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 13px 20px 0 rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  /* margin: 5px 20px 40px 20px; */
+  width: 100%;
+  vertical-align: middle;
+  margin-top: 30px;
+  /* margin: auto; */
+  /* height: 100%; */
 }
 
 .btn:hover {
   background-color: #ff2262;
 }
 
-.btn:active
-{
+.btn:active {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
   -ms-transform: scale(0.95);
   transform: scale(0.95);
+}
+
+.jumb {
+  margin-bottom: 0;
+  background-color: rgba(255, 34, 98, 0.6);
+  padding: 3%;
+  text-align: center;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.collap {
+  margin-top: 0px;
 }
