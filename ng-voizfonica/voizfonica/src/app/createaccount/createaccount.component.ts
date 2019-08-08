@@ -102,7 +102,9 @@ export class CreateaccountComponent implements OnInit {
     && this.retype_pw_var!=null && this.retype_pw_var!=''
     && this.name_match(this.name_var) 
     && this.phone_num_match(this.phone_num_var) 
-    && this.pw_var==this.retype_pw_var)
+    && this.pw_var==this.retype_pw_var
+    && !this.isAlreadyPresent
+    && this.isCustomer)
       return true;
     else
       return false;
