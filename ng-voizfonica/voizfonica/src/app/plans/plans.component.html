@@ -1,163 +1,90 @@
-
-        <div class="container-fluid jumb">
-                        <h1 class="display-4">Packs</h1>
-        </div>
-        <div class="container-fluid">
-        <div class="text-center smart" >
-            <h2>Smart packs</h2>
+<div class="container-fluid jumb">
+        <h1 class="display-4">Packs</h1>
+      </div>
+      <div class="container-fluid">
+        <div class="text-center smart">
+          <h2>Smart packs</h2>
         </div>
         <div class="container text-center">
-            <div class="row" style="background-color:white;">
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header" >
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary btn-block">Buy</button></a> 
-                                </div>
-                              </div>
+          <div class="row" style="background-color:white;">
+            <div *ngFor="let plan of plans">
+              <div *ngIf="plan.packname === 'smart'">
+                <div class="col-md-4 pad">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3>{{ plan.amount }}</h3>
+                      <h4>{{ plan.Validity }}</h4>
+                    </div>
+                    <div class="card-body">
+                      <p><strong>Data:</strong>{{ plan.Data }}</p>
+                      <p><strong>Calls:</strong>{{ plan.Calls }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <a routerLink="/pay"
+                        ><button class="btn btn-primary">Buy</button></a
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
         <div class="text-center" style="background-color: white;padding: 40px;">
-            <h2>Data</h2>
+          <h2>Data</h2>
         </div>
         <div class="container text-center">
-            <div class="row" style="background-color:white;">
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
+          <div class="row" style="background-color:white;">
+            <div *ngFor="let plan of plans">
+              <div *ngIf="plan.packname === 'data'">
+                <div class="col-md-4 pad">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3>{{ plan.amount }}</h3>
+                      <h4>{{ plan.Validity }}</h4>
+                    </div>
+                    <div class="card-body">
+                      <p><strong>Data:</strong>{{ plan.data }}</p>
+                      <p><strong>Calls:</strong>{{ plan.Calls }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <a routerLink="/pay"
+                        ><button class="btn btn-primary">Buy</button></a
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
         <div class="text-center" style="background-color: white;padding: 40px;">
-            <h2>Talktime</h2>
+          <h2>Talktime</h2>
         </div>
         <div class="container text-center">
-            <div class="row" style="background-color:white;">
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
+          <div class="row" style="background-color:white;">
+            <div *ngFor="let plan of plans">
+              <div *ngIf="plan.packname === 'talktime'">
+                <div class="col-md-4 pad">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3>{{ plan.amount }}</h3>
+                      <h4>{{ plan.Validity }}</h4>
+                    </div>
+                    <div class="card-body">
+                      <p><strong>Data:</strong>{{ plan.data }}</p>
+                      <p><strong>Calls:</strong>{{ plan.Calls }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <a routerLink="/pay"
+                        ><button class="btn btn-primary">Buy</button></a
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                        <div class="card">
-                                <div class="card-header">
-                                        <h3>Rs.123</h3>
-                                        <h4>84 days Validity</h4>
-                                </div>
-                                <div class="card-body">
-                                        <p><strong>Data:</strong>2GB</p>
-                                        <p><strong>Calls:</strong>Unlimited</p>
-                                </div> 
-                                <div class="card-footer">
-                                        <a routerLink='/pay'><button class="btn btn-primary">Buy</button></a> 
-                                </div>
-                              </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-</div>
-    
+      </div>
+      

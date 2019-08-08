@@ -52,6 +52,11 @@ export class ApiService {
     return this.http.post(this.baseUrl + 'auth/', body, { headers: this.httpHeaders });
   }
 
+  getPlans(): Observable<any> {
+    return this.http.get(this.baseUrl + "plan/", {
+      headers: this.httpHeaders
+    });
+  }
   // getOnlineUsers():Observable<any>
   // {
   //   return this.http.get<any>(this.baseUrl+'onlineusers/',
