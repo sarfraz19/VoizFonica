@@ -35,7 +35,7 @@ input[type="reset"] {
   /* text-transform:uppercase;  */
   border: none;
   color: white;
-  padding: 15px 20px;
+  padding: 3% 18%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -64,6 +64,7 @@ input[type="reset"]:active {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="password"] {
   background-color: #f6f6f6;
   border: none;
@@ -81,14 +82,20 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
+input[type="number"]:focus,
 input[type="password"]:focus {
   background-color: #fff;
   border-bottom: 2px solid rgba(255, 34, 98, 0.6);
 }
 
 input[type="text"]:placeholder,
+input[type="number"]:placeholder,
 input[type="password"]:placeholder {
   color: #cccccc;
+}
+
+input[type="number"]::-webkit-inner-spin-button{
+  appearance:none;
 }
 
 *:focus {
@@ -97,4 +104,9 @@ input[type="password"]:placeholder {
 
 .btn {
   background: #ff2262;
+}
+
+.text-danger
+{
+  margin:2% 0;
 }

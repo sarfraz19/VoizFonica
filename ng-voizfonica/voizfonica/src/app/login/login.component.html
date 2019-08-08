@@ -6,36 +6,43 @@
 
     <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
     <form>
-      <input
-        type="text"
-        placeholder="Phone Number"
-        name="ph"
-        phone
-        required
-        #ph1
-      />
+      <input type="number" placeholder="Phone Number" name="ph1" [(ngModel)]="ph_var" #ph="ngModel" required/>
 
-      <input type="password" placeholder="Password" name="pw" #pw1 />
+      <div *ngIf="ph.invalid && (ph.dirty || ph.touched || isBtnClicked)" class="text-danger">
+
+        <div *ngIf="ph.errors.required">
+         Phone number is required
+        </div>
+
+      </div>
+
+      <div *ngIf="(ph.touched || isBtnClicked) && !phone_num_match(ph_var)" class="text-danger">
+        Enter a valid phone number
+      </div>
+
+      <div *ngIf="!isUser" class="text-danger">
+        You do not have an online account
+      </div>
+
+      <input type="password" placeholder="Password" name="pw1" [(ngModel)]="pw_var" #pw="ngModel" required/>
+
+      <div *ngIf="pw.invalid && (pw.dirty || pw.touched || isBtnClicked)" class="text-danger">
+
+        <div *ngIf="pw.errors.required">
+          Password is required
+        </div>
+
+      </div>
+
+      <div *ngIf="pw_var=='null' && (pw.touched || isBtnClicked)" class="text-danger">
+        Password is wrong
+      </div>
 
       <br /><br />
 
-      <a routerLink="/prepaid">
-        <input
-          type="button"
-          class="btn"
-          (click)="onSubmit(login)"
-          value="Login (Prepaid)"
-        />
-      </a>
-
-      <a routerLink="/postpaid">
-        <input
-          type="submit"
-          class="btn"
-          (click)="onSubmit(login)"
-          value="Login (Postpaid)"
-        />
-      </a>
+      <!-- <a routerLink="/prepaid"> -->
+        <input type="button" class="btn" (click)="check()" value="Login" id="loginBtn"/>
+      <!-- </a> -->
 
       <div class="modal fade" id="myModal">
         <div class="modal-dialog">
@@ -46,12 +53,7 @@
               </div>
               <br />
               <a routerLink="/login">
-                <button
-                  type="button"
-                  class="btn"
-                  data-dismiss="modal"
-                  style="color: white"
-                >
+                <button type="button" class="btn" data-dismiss="modal" style="color: white">
                   OK
                 </button>
               </a>
@@ -66,13 +68,7 @@
         <a routerLink="/createaccount" style="padding: 9%;">Create Account ?</a>
       </div>
       <div class="col">
-        <a
-          href=""
-          style="padding: 9%;"
-          data-toggle="modal"
-          data-target="#myModal"
-          >Forgot Password ?</a
-        >
+        <a href="" style="padding: 9%;" data-toggle="modal" data-target="#myModal">Forgot Password ?</a>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createaccount',
@@ -21,7 +22,8 @@ export class CreateaccountComponent implements OnInit {
   isCustomer=true;
   isAlreadyPresent:boolean;
 
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService:ApiService,
+    private router:Router) {}
 
   ngOnInit() {
     // this.apiService.getOnlineUsers().subscribe(data=>(this.onlineusers=data));
@@ -43,6 +45,7 @@ export class CreateaccountComponent implements OnInit {
 
   save(){
     this.apiService.createNewUser(this.name_var,this.phone_num_var,this.pw_var).subscribe(data=>(true));
+    this.router.navigate(['/login']);
   }
 
   // select(id)

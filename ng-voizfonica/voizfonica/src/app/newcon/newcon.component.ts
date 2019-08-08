@@ -110,21 +110,21 @@ export class NewconComponent implements OnInit {
   check_valid()
   {
     this.isBtnClicked=true;
-    // if(this.name_var!=null && this.name_var!=''
-    // && this.address_var!=null && this.address_var!=''
-    // && this.pincode_var!=null && this.pincode_var!=''
-    // && this.email_var!=null && this.email_var!=''
-    // && this.preposdon_var!=null && this.preposdon_var!=''
-    // && this.selectplan_var!=null && this.selectplan_var!=''
-    // && this.kycdate_var!=null
-    // && this.name_match(this.name_var)
-    // && this.pincode_match(this.pincode_var)
-    // && this.email_match(this.email_var)
-    // && this.selectnum_match(this.selectnum_var)
-    // && this.kycdate_match(this.kycdate_var))
+    if(this.name_var!=null && this.name_var!=''
+    && this.address_var!=null && this.address_var!=''
+    && this.pincode_var!=null && this.pincode_var!=''
+    && this.email_var!=null && this.email_var!=''
+    && this.preposdon_var!=null && this.preposdon_var!=''
+    && this.selectplan_var!=null && this.selectplan_var!=''
+    && this.kycdate_var!=null
+    && this.name_match(this.name_var)
+    && this.pincode_match(this.pincode_var)
+    && this.email_match(this.email_var)
+    && this.selectnum_match(this.selectnum_var)
+    && this.kycdate_match(this.kycdate_var))
       this.save();
-    // else
-    //   return false;
+    else
+      return false;
   }
 
   save()
