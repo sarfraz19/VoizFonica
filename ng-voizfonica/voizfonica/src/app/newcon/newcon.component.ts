@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-newcon',
@@ -27,7 +28,7 @@ export class NewconComponent implements OnInit {
   yr:number;
 
 
-  constructor() { }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit() {
   }
@@ -121,9 +122,15 @@ export class NewconComponent implements OnInit {
     && this.email_match(this.email_var)
     && this.selectnum_match(this.selectnum_var)
     && this.kycdate_match(this.kycdate_var))
-      this.sub=true;
+      this.save();
     else
       return false;
+  }
+
+  save()
+  {
+    if(this.selectnum_var!=null)
+      this.apiService.addToCustomers(this.address_var,this.email_var,this.kycdate_var,this.name_var,this.pincode_var,this.selectplan_var,this.preposdon_var,this.selectnum_var).subscribe(data=>(console.log(data)))
   }
 
   getDateTime()

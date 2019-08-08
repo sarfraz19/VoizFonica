@@ -35,6 +35,13 @@ export class ApiService {
     );
   }
 
+  addToCustomers(a,e,k,n,pin,pl,ppd,num):Observable<any>
+  {
+    const details={address:a,email:e,kyc_date:k,name:n,pincode:pin,plan:pl,prepostdon:ppd,select_num:num};
+    return this.http.post<any>(this.baseUrl+'customersbynum/',details,
+      {headers:this.httpHeaders});
+  }
+
   loginUser(authData)
   {
     const body=JSON.stringify(authData);
