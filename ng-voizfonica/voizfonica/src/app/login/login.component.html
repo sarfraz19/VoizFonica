@@ -6,7 +6,8 @@
 
     <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
     <form>
-      <input type="number" placeholder="Phone Number" name="ph1" [(ngModel)]="ph_var" #ph="ngModel" required/>
+      <span class="txt">+91</span>
+      <input type="number" style="width:70%;" placeholder="Phone Number" name="ph1" [(ngModel)]="ph_var" #ph="ngModel" required/>
 
       <div *ngIf="ph.invalid && (ph.dirty || ph.touched || isBtnClicked)" class="text-danger">
 
@@ -64,10 +65,10 @@
     </form>
 
     <div class="row" style="font-size:9pt;padding-bottom:4%">
-      <div class="col">
-        <a routerLink="/createaccount" style="padding: 9%;">Create Account ?</a>
+      <div class="col anchor">
+        <a routerLink="/createaccount" style="padding: 9%;">Sign Up</a>
       </div>
-      <div class="col">
+      <div class="col anchor">
         <a href="" style="padding: 9%;" data-toggle="modal" data-target="#myModal">Forgot Password ?</a>
       </div>
     </div>

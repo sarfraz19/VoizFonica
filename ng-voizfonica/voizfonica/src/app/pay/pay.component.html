@@ -10,30 +10,71 @@
             <div class="col-md-6">
                 <div class="blueoutline">
                 <table>
-                <tr>
+                <!-- <tr> 
                 <th>Select Bank</th>
                 <th class="nopad">:</th>
                 <td>
-                    <select style="max-width:100%"class="form-control" >
-                        <option>Axis Bank</option>
-                        <option>Kotak Mahindra Bank</option>
-                        <option>Indian Bank</option>
-                        <option>SBI</option>
+                    <select style="max-width:100%"class=" txt form-control" name="bank1" [(ngModel)]="bank_var" #bank="ngModel" required>
+                        <option [ngValue]="none"disabled>Select a Bank</option>
+                        <option *ngFor="let o of options" [ngValue]="o">{{o}}</option>
                     </select></td>
-            </tr>
-            <tr>
+        <div *ngIf="bank.invalid && (bank.touched || isBtnClicked)" class="text-danger"style="margin-top:30%">
+
+          <div *ngIf="bank.errors.required">
+         Select a Bank   </div>
+
+        </div>
+
+                        
+                    
+            </tr> -->
+            <!-- <tr>
                 <th>Mode of payment</th>
                 <th class="nopad">:</th>
                 <td>
-                    <select style="max-width:100%" class="form-control">
-                        <option>Credit Card</option>
-                        <option>Debit Card</option>
-                        <option>Wallet</option>
-                        <option>Internet Banking</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
+                    <select style="max-width:100%" class=" txt form-control" name="cardd1" [(ngModel)]="cardd_var" #cardd=ngModel>
+                        <option [ngValue]="none" disabled>Select the mode of payment</option>
+                        <option *ngFor="let c of cards" [ngValue]="c">{{c}}</option>   
+                    </select></td></tr>
+                    <div *ngIf="cardd.invalid && (cardd.touched || isBtnClicked)" class="text-danger">
+
+                            <div *ngIf="cardd.errors.required">
+                           Select the mode of payment   </div>
+                  
+                          </div> -->
+                  
+        
+            <tr><th><label>Card Number</label></th>
+                <th class="nopad">:</th>
+            <td><input type="number" name="card1" [(ngModel)]="card_var" #card="ngModel"class="form-control" placeholder="Valid Card Number"
+                        required autofocus style="max-width: 100%;" /></td></tr>
+             <div *ngIf="card.invalid && (card.dirty || card.touched || isBtnClicked)" class="text-danger">
+
+                                <div *ngIf="card.errors.required">
+                                  Card number is required
+                                </div>
+                                </div>
+                                <div *ngIf="(card.touched || isBtnClicked) && !card_match(card_var)" class="text-danger">
+                                        Enter a valid card number
+                                      </div>
+
+            <tr><th><label>Expiry Date</label></th>
+                <th class="nopad">:</th>
+                <td><input type="number"class="form-control"  placeholder="MM//YY"  style="max-width: 100%" /></td>
+                            </tr>
+                            <tr><th>CVV</th>
+                                <th class="nopad">:</th>
+                            <td><input type="number" name="cvv1" [(ngModel)]="cvv_var" #cvv="ngModel"class="form-control"  placeholder="CVV"  style="max-width: 100%" /></td></tr>
+                            <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched || isBtnClicked)" class="text-danger">
+
+                                    <div *ngIf="cvv.errors.required">
+                                      CVV is required
+                                    </div>
+                                    </div>
+                                    <div *ngIf="(cvv.touched || isBtnClicked) && !cvv_match(cvv_var)" class="text-danger">
+                                            Enter a valid cvv
+                                          </div>
+                            <tr>
                 <th>Amount</th>
                 <th class="nopad">:</th>
                 <td>Rs.300</td>

@@ -12,8 +12,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  createNewUser(n, pn, pw): Observable<any> {
-    const details = { username: pn, password: pw, first_name: n };
+  createNewUser(n, un, pn, pw): Observable<any> {
+    const details = { username: pn, password: pw, first_name: n, last_name: un };
     return this.http.post<any>(this.baseUrl + 'users/', details,
       { headers: this.httpHeaders }
     );

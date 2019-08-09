@@ -67,6 +67,7 @@ input[type="reset"]:active {
     transform: scale(0.95);
 }
 
+.txt,
 input[type="text"],
 input[type="password"],
 input[type="number"] {
@@ -121,4 +122,21 @@ input[type="number"]:placeholder {
 
 .btn {
     background: #ff2262;
+}
+
+.txt{
+    width:auto;
+    padding:10px;
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 1px solid #ddd;  
+}
+
+input[type="number"]
+{
+    margin-left:0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    text-indent: -50px;
 }

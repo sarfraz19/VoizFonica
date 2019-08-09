@@ -15,6 +15,7 @@ export class CreateaccountComponent implements OnInit {
   isBtnClicked=false;
 
   name_var:string;
+  user_name_var:string;
   phone_num_var:string;
   pw_var:string;
   retype_pw_var:string;
@@ -44,7 +45,7 @@ export class CreateaccountComponent implements OnInit {
   }
 
   save(){
-    this.apiService.createNewUser(this.name_var,this.phone_num_var,this.pw_var).subscribe(data=>(true));
+    this.apiService.createNewUser(this.name_var,this.user_name_var,this.phone_num_var,this.pw_var).subscribe(data=>(true));
     this.router.navigate(['/login']);
   }
 
@@ -81,13 +82,49 @@ export class CreateaccountComponent implements OnInit {
     return true;
   }
 
+  user_name_start(str):boolean
+  {
+    if(str!=null && str!='')
+    {
+      str=str.trim();
+      var reg=new RegExp('^[a-zA-Z]');
+      var user_name_val=reg.test(str); 
+      return user_name_val;
+    }
+    return true;
+  }
+
+  user_name_space(str):boolean
+  {
+    if(str!=null && str!='')
+    {
+      str=str.trim();
+      var reg=new RegExp('\ ');
+      var user_name_val=reg.test(str); 
+      return !user_name_val;
+    }
+    return true;
+  }
+  
+  user_name_match(str):boolean
+  {
+    if(str!=null && str!='')
+    {
+      str=str.trim();
+      var reg=new RegExp('^[a-zA-Z0-9|\*|#|-|_|\ ]+$');
+      var user_name_val=reg.test(str); 
+      return user_name_val;
+    }
+    return true;
+  }
+
   phone_num_match(num):boolean
   {
     if(num!=null)
     {
       var str:string;
       str=num;
-      var reg=new RegExp('^[0-9]{10}$');
+      var reg=new RegExp('^[6-9][0-9]{9}$');
       var phone_num_val=reg.test(str); 
       return phone_num_val;
     }
@@ -97,10 +134,12 @@ export class CreateaccountComponent implements OnInit {
   regForm_valid():boolean
   {
     if(this.name_var!=null && this.name_var!=''
+    && this.user_name_var!=null && this.user_name_var!=''
     && this.phone_num_var!=null && this.phone_num_var!=''
     && this.pw_var!=null && this.pw_var!=''
     && this.retype_pw_var!=null && this.retype_pw_var!=''
     && this.name_match(this.name_var) 
+    && this.user_name_start(this.user_name_var) && this.user_name_space(this.user_name_var) && this.user_name_match(this.user_name_var)
     && this.phone_num_match(this.phone_num_var) 
     && this.pw_var==this.retype_pw_var
     && !this.isAlreadyPresent

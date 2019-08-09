@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
     {
       var str:string;
       str=num;
-      var reg=new RegExp('^[0-9]{10}$');
+      var reg=new RegExp('^[6-9][0-9]{9}$');
       return reg.test(str);
     }
     return true;
