@@ -41,8 +41,8 @@
 
         <br>
         <span class="txt">+91</span>
-        <input style="width:73%;" type="number" class="phone" name="phone_num1" placeholder="Phone no" [(ngModel)]="phone_num_var"
-          #phone_num="ngModel" required />
+        <input style="width:73%;" type="number" class="phone" name="phone_num1" placeholder="Phone no"
+          [(ngModel)]="phone_num_var" #phone_num="ngModel" required />
         <div *ngIf="phone_num.invalid && (phone_num.dirty || phone_num.touched || isBtnClicked)" class="text-danger">
 
           <div *ngIf="phone_num.errors.required">
@@ -55,13 +55,14 @@
           Enter a valid phone number
         </div>
 
-        <input type="text" name="aadhar1" placeholder="Aadhar Number" [(ngModel)]="aadhar_var" #aadhar="ngModel" required/>
+        <input type="text" name="aadhar1" placeholder="Aadhar Number" [(ngModel)]="aadhar_var" #aadhar="ngModel"
+          required />
         <div *ngIf="aadhar.invalid && (aadhar.dirty || aadhar.touched || isBtnClicked)" class="text-danger">
 
           <div *ngIf="aadhar.errors.required">
-             Aadhar number is required
+            Aadhar number is required
           </div>
-          
+
         </div>
         <div *ngIf="(aadhar.touched || isBtnClicked) && !aadhar_match(aadhar_var)" class="text-danger">
           Enter a valid aadhar number
@@ -87,38 +88,53 @@
 
         <input type="button" class="btn" value="Get OTP" (click)="check()" data-toggle="modal" data-target="#myModal" />
 
-        <div *ngIf="regForm_frontend_val">
-          <div *ngIf="isAlreadyPresent" class="alert alert-danger">
-            You already have an account<br>Go to <a routerLink='/login'>login page</a>
-          </div>
-
-          <div *ngIf="!isCustomer" class="alert alert-danger">
-            You are not a VoizFonica customer<br><a routerLink='/newcon'>Get a connection</a>
-          </div>
-
-          <div *ngIf="isCustomer && !isAlreadyPresent && userNameTaken" class="alert alert-danger">
-            This username is already taken<br>Try another one
-          </div>
-        </div>
+        <div *ngIf="frontend_valid()"></div>
 
       </form>
     </div>
 
-    <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <div style="font-size:20pt;padding-bottom:2%">
-              <input type="text" name="" placeholder="Enter OTP" />
-            </div>
-            <br />
-            <div *ngIf="frontend_valid()">
+    <div *ngIf="regForm_frontend_val">
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
 
+              <div *ngIf="!isCustomer" class="alert alert-danger">
+                You are not a VoizFonica customer
+                <!-- <br><a routerLink='/newcon'>Get a connection</a> -->
+              </div>
+
+              <div *ngIf="isAlreadyPresent" class="alert alert-danger">
+                You already have an online account<br>Go to login page
+                <!-- <a routerLink='/login'>login page</a> -->
+              </div>
+
+              <div *ngIf="isCustomer && !isAlreadyPresent && !aadharMatches" class="alert alert-danger">
+                Your Aadhar number does not match
+              </div>
+
+              <div *ngIf="isCustomer && !isAlreadyPresent && aadharMatches && !aadharVerified"
+                class="alert alert-danger">
+                Please complete your KYC and then create an online account
+              </div>
+
+              <div *ngIf="isCustomer && !isAlreadyPresent && aadharMatches && aadharVerified && userNameTaken"
+                class="alert alert-danger">
+                This username is already taken<br>Try another one
+              </div>
+
+              <div *ngIf="regForm_valid()">
+                <div style="font-size:20pt;padding-bottom:2%">
+                  <input type="text" name="" placeholder="Enter OTP" />
+                </div>
+                <br />
+                <div *ngIf="frontend_valid()"></div>
+                <button type="submit" class="btn" data-dismiss="modal" style="color: white;"
+                  (click)="regForm.ngSubmit.emit()">
+                  Register
+                </button>
+              </div>
             </div>
-            <button type="submit" class="btn" data-dismiss="modal" style="color: white;"
-              (click)="regForm.ngSubmit.emit()" [disabled]="!regForm_valid()">
-              Register
-            </button>
           </div>
         </div>
       </div>

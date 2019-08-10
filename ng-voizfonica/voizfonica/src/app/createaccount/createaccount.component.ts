@@ -18,11 +18,11 @@ export class CreateaccountComponent implements OnInit {
   user_name_var:string;
   phone_num_var:string;
   aadhar_var:string;
+  aadhar_var_short:string;
   pw_var:string;
   retype_pw_var:string;
 
   customer={aadhar:'',aadhar_verified:false};
-  ermsg='';
 
   regForm_frontend_val=false;
 
@@ -36,12 +36,19 @@ export class CreateaccountComponent implements OnInit {
     private router:Router) {}
 
   ngOnInit() {
-    // this.apiService.getOnlineUsers().subscribe(data=>(this.onlineusers=data));
+    // this.apiService.getOnlineUsers().subscribe(data=>(this.onlineusers=data));    
   }
 
   check()
   {
     this.isBtnClicked=true;
+
+    var reg=new RegExp('^[0-9]{4}\\ [0-9]{4}\\ [0-9]{4}$');
+    this.aadhar_var_short=this.aadhar_var;
+    if(reg.test(this.aadhar_var_short))
+    {
+      this.aadhar_var_short=this.aadhar_var_short.substring(0,4)+this.aadhar_var_short.substring(5,9)+this.aadhar_var_short.substring(10,14);
+    }
 
     this.apiService.checkIsCustomer(this.phone_num_var).subscribe(
       data=>(this.isCustomer=true,this.customer=data),
@@ -53,23 +60,19 @@ export class CreateaccountComponent implements OnInit {
       error=>(this.isAlreadyPresent=false)
       );
 
-    if(this.aadhar_var==this.customer.aadhar)
+    if(this.aadhar_var_short==this.customer.aadhar)
       this.aadharMatches=true;
     else
       this.aadharMatches=false;
 
     this.aadharVerified=this.customer.aadhar_verified;
 
-    if(!this.aadharMatches)
-      this.ermsg='Your Aadhar number does not match';
-    else if(this.aadharMatches && !this.aadharVerified)
-      this.ermsg='Please complete your KYC and then create an online account';
-      
     this.apiService.checkUserNamePresent(this.user_name_var).subscribe(
       data=>(this.userNameTaken=true),
       error=>(this.userNameTaken=false)
       );
-     
+
+     return true;
   }
 
   save(){
@@ -166,10 +169,6 @@ export class CreateaccountComponent implements OnInit {
       str=str.trim();
       var reg=new RegExp('^[0-9]{4}\\ [0-9]{4}\\ [0-9]{4}$');
       var reg1=new RegExp('^[0-9]{12}$');
-      if(reg.test(str))
-      {
-        str=str.substring(0,4)+str.substring(5,9)+str.substring(10,14);
-      }
       return reg.test(str)||reg1.test(str);
     }
     return true;
@@ -197,9 +196,7 @@ export class CreateaccountComponent implements OnInit {
   }
 
   regForm_valid():boolean
-  {
-    console.log(this.ermsg,this.isCustomer,this.isAlreadyPresent);
-    
+  {    
     if(this.name_var!=null && this.name_var!=''
     && this.user_name_var!=null && this.user_name_var!=''
     && this.phone_num_var!=null && this.phone_num_var!=''
