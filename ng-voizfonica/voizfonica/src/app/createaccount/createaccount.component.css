@@ -133,7 +133,7 @@ input[type="number"]:placeholder {
     border-right: 1px solid #ddd;  
 }
 
-input[type="number"]
+.phone
 {
     margin-left:0;
     border-top-left-radius: 0;

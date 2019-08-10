@@ -6,10 +6,10 @@
       </div>
 
       <form (ngSubmit)="save()" #regForm="ngForm">
-        <input type="text" name="name1" placeholder="Name" [(ngModel)]="name_var" #name="ngModel" required/>
-              
+        <input type="text" name="name1" placeholder="Name" [(ngModel)]="name_var" #name="ngModel" required />
+
         <div *ngIf="name.invalid && (name.dirty || name.touched || isBtnClicked)" class="text-danger">
-      
+
           <div *ngIf="name.errors.required">
             Name is required
           </div>
@@ -17,12 +17,13 @@
         </div>
         <div *ngIf="!name_match(name_var)" class="text-danger">
           Name can contain only alphabets
-        </div> 
+        </div>
 
-        <input type="text" name="user_name1" placeholder="Username" [(ngModel)]="user_name_var" #user_name="ngModel" required/>
-              
+        <input type="text" name="user_name1" placeholder="Username" [(ngModel)]="user_name_var" #user_name="ngModel"
+          required />
+
         <div *ngIf="user_name.invalid && (user_name.dirty || user_name.touched || isBtnClicked)" class="text-danger">
-      
+
           <div *ngIf="user_name.errors.required">
             Username is required
           </div>
@@ -40,50 +41,65 @@
 
         <br>
         <span class="txt">+91</span>
-        <input  style="width:73%;" type="number" name="phone_num1" placeholder="Phone no" [(ngModel)]="phone_num_var" #phone_num="ngModel" required/>
+        <input style="width:73%;" type="number" class="phone" name="phone_num1" placeholder="Phone no" [(ngModel)]="phone_num_var"
+          #phone_num="ngModel" required />
         <div *ngIf="phone_num.invalid && (phone_num.dirty || phone_num.touched || isBtnClicked)" class="text-danger">
-      
+
           <div *ngIf="phone_num.errors.required">
             Phone number is required
           </div>
-        
+
         </div>
 
         <div *ngIf="(phone_num.touched || isBtnClicked) && !phone_num_match(phone_num_var)" class="text-danger">
           Enter a valid phone number
-        </div> 
+        </div>
 
-        <input type="password" name="pw1" placeholder="Password" [(ngModel)]="pw_var" #pw="ngModel" required/>
-        
+        <input type="text" name="aadhar1" placeholder="Aadhar Number" [(ngModel)]="aadhar_var" #aadhar="ngModel" required/>
+        <div *ngIf="aadhar.invalid && (aadhar.dirty || aadhar.touched || isBtnClicked)" class="text-danger">
+
+          <div *ngIf="aadhar.errors.required">
+             Aadhar number is required
+          </div>
+          
+        </div>
+        <div *ngIf="(aadhar.touched || isBtnClicked) && !aadhar_match(aadhar_var)" class="text-danger">
+          Enter a valid aadhar number
+        </div>
+
+        <input type="password" name="pw1" placeholder="Password" [(ngModel)]="pw_var" #pw="ngModel" required />
+
         <div *ngIf="pw.invalid && (pw.dirty || pw.touched || isBtnClicked)" class="text-danger">
-      
+
           <div *ngIf="pw.errors.required">
             Password is required
           </div>
-        
+
         </div>
 
-        <input type="password" name="retype_pw1" placeholder="Re-type Password" [(ngModel)]="retype_pw_var" #retype_pw="ngModel" required/>
-                
-        <div *ngIf="(retype_pw.touched || isBtnClicked) && pw_var!=null && pw_var!='' && pw_var!=retype_pw_var" class="text-danger">
+        <input type="password" name="retype_pw1" placeholder="Re-type Password" [(ngModel)]="retype_pw_var"
+          #retype_pw="ngModel" required />
+
+        <div *ngIf="(retype_pw.touched || isBtnClicked) && pw_var!=null && pw_var!='' && pw_var!=retype_pw_var"
+          class="text-danger">
           Re-typed password does not match Password
         </div>
 
-        <input 
-          type="button" 
-          class="btn" 
-          value="Get OTP" 
-          (click)="check()"
-          data-toggle="modal" 
-          data-target="#myModal"/>
+        <input type="button" class="btn" value="Get OTP" (click)="check()" data-toggle="modal" data-target="#myModal" />
 
+        <div *ngIf="regForm_val">
           <div *ngIf="isAlreadyPresent" class="alert alert-danger">
-            You already have an account<br>Go to login page
+            You already have an account<br>Go to <a routerLink='/login'>login page</a>
           </div>
 
           <div *ngIf="!isCustomer" class="alert alert-danger">
             You are not a VoizFonica customer<br><a routerLink='/newcon'>Get a connection</a>
           </div>
+
+          <div *ngIf="isCustomer && !isAlreadyPresent && userNameTaken" class="alert alert-danger">
+            This username is already taken<br>Try another one
+          </div>
+        </div>
 
       </form>
     </div>
@@ -96,14 +112,8 @@
               <input type="text" name="" placeholder="Enter OTP" />
             </div>
             <br />
-            <button 
-                type="submit" 
-                class="btn" 
-                data-dismiss="modal" 
-                style="color: white;"
-                (click)="regForm.ngSubmit.emit()"
-                [disabled]="!regForm_valid()"
-            >
+            <button type="submit" class="btn" data-dismiss="modal" style="color: white;"
+              (click)="regForm.ngSubmit.emit()" [disabled]="!regForm_valid()">
               Register
             </button>
           </div>

@@ -27,7 +27,13 @@ export class ApiService {
 
   checkUserPresent(pn): Observable<any> {
     //   const details={username:pn,password:pw,first_name:n};
-    return this.http.get<any>(this.baseUrl + 'usersbyname/' + pn + '/',
+    return this.http.get<any>(this.baseUrl + 'usersbynum/' + pn + '/',
+      { headers: this.httpHeaders }
+    );
+  }
+
+  checkUserNamePresent(un): Observable<any> {
+    return this.http.get<any>(this.baseUrl + 'usersbyusername/' + un + '/',
       { headers: this.httpHeaders }
     );
   }

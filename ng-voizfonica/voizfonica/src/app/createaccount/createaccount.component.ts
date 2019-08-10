@@ -17,11 +17,15 @@ export class CreateaccountComponent implements OnInit {
   name_var:string;
   user_name_var:string;
   phone_num_var:string;
+  aadhar_var:string;
   pw_var:string;
   retype_pw_var:string;
 
+  regForm_val=false;
+
   isCustomer=true;
   isAlreadyPresent:boolean;
+  userNameTaken:boolean;
 
   constructor(private apiService:ApiService,
     private router:Router) {}
@@ -41,7 +45,16 @@ export class CreateaccountComponent implements OnInit {
 
     this.apiService.checkUserPresent(this.phone_num_var).subscribe(
       data=>(this.isAlreadyPresent=true),
-      error=>(this.isAlreadyPresent=false));
+      error=>(this.isAlreadyPresent=false)
+      );
+
+    this.apiService.checkUserNamePresent(this.user_name_var).subscribe(
+      data=>(this.userNameTaken=true),
+      error=>(this.userNameTaken=false)
+      );
+
+      console.log("here",this.isCustomer,this.isAlreadyPresent,this.userNameTaken);
+      
   }
 
   save(){
@@ -142,11 +155,27 @@ export class CreateaccountComponent implements OnInit {
     && this.user_name_start(this.user_name_var) && this.user_name_space(this.user_name_var) && this.user_name_match(this.user_name_var)
     && this.phone_num_match(this.phone_num_var) 
     && this.pw_var==this.retype_pw_var
+    && this.isCustomer
     && !this.isAlreadyPresent
-    && this.isCustomer)
+    && !this.userNameTaken)
+    {
+      this.regForm_val=true;
       return true;
+    }
     else
       return false;
+  }
+
+  aadhar_match(str):boolean
+  {
+    if(str!=null && str!='')
+    {
+      str=str.trim();
+      var reg=new RegExp('^[0-9]{4}\\ [0-9]{4}\\ [0-9]{4}$');
+      var reg1=new RegExp('^[0-9]{12}$');
+      return reg.test(str)||reg1.test(str);
+    }
+    return true;
   }
 
 
