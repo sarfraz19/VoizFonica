@@ -21,10 +21,15 @@ export class CreateaccountComponent implements OnInit {
   pw_var:string;
   retype_pw_var:string;
 
-  regForm_val=false;
+  customer={aadhar:'',aadhar_verified:false};
+  ermsg='';
+
+  regForm_frontend_val=false;
 
   isCustomer=true;
   isAlreadyPresent:boolean;
+  aadharMatches:boolean;
+  aadharVerified:boolean;
   userNameTaken:boolean;
 
   constructor(private apiService:ApiService,
@@ -39,7 +44,7 @@ export class CreateaccountComponent implements OnInit {
     this.isBtnClicked=true;
 
     this.apiService.checkIsCustomer(this.phone_num_var).subscribe(
-      data=>(this.isCustomer=true),
+      data=>(this.isCustomer=true,this.customer=data),
       error=>(this.isCustomer=false)
       );
 
@@ -48,13 +53,23 @@ export class CreateaccountComponent implements OnInit {
       error=>(this.isAlreadyPresent=false)
       );
 
+    if(this.aadhar_var==this.customer.aadhar)
+      this.aadharMatches=true;
+    else
+      this.aadharMatches=false;
+
+    this.aadharVerified=this.customer.aadhar_verified;
+
+    if(!this.aadharMatches)
+      this.ermsg='Your Aadhar number does not match';
+    else if(this.aadharMatches && !this.aadharVerified)
+      this.ermsg='Please complete your KYC and then create an online account';
+      
     this.apiService.checkUserNamePresent(this.user_name_var).subscribe(
       data=>(this.userNameTaken=true),
       error=>(this.userNameTaken=false)
       );
-
-      console.log("here",this.isCustomer,this.isAlreadyPresent,this.userNameTaken);
-      
+     
   }
 
   save(){
@@ -124,7 +139,7 @@ export class CreateaccountComponent implements OnInit {
     if(str!=null && str!='')
     {
       str=str.trim();
-      var reg=new RegExp('^[a-zA-Z0-9|\*|#|-|_|\ ]+$');
+      var reg=new RegExp('^[a-zA-Z0-9|\*|#|\\-|_|\ ]+$');
       var user_name_val=reg.test(str); 
       return user_name_val;
     }
@@ -144,28 +159,6 @@ export class CreateaccountComponent implements OnInit {
     return true;
   }
 
-  regForm_valid():boolean
-  {
-    if(this.name_var!=null && this.name_var!=''
-    && this.user_name_var!=null && this.user_name_var!=''
-    && this.phone_num_var!=null && this.phone_num_var!=''
-    && this.pw_var!=null && this.pw_var!=''
-    && this.retype_pw_var!=null && this.retype_pw_var!=''
-    && this.name_match(this.name_var) 
-    && this.user_name_start(this.user_name_var) && this.user_name_space(this.user_name_var) && this.user_name_match(this.user_name_var)
-    && this.phone_num_match(this.phone_num_var) 
-    && this.pw_var==this.retype_pw_var
-    && this.isCustomer
-    && !this.isAlreadyPresent
-    && !this.userNameTaken)
-    {
-      this.regForm_val=true;
-      return true;
-    }
-    else
-      return false;
-  }
-
   aadhar_match(str):boolean
   {
     if(str!=null && str!='')
@@ -173,10 +166,58 @@ export class CreateaccountComponent implements OnInit {
       str=str.trim();
       var reg=new RegExp('^[0-9]{4}\\ [0-9]{4}\\ [0-9]{4}$');
       var reg1=new RegExp('^[0-9]{12}$');
+      if(reg.test(str))
+      {
+        str=str.substring(0,4)+str.substring(5,9)+str.substring(10,14);
+      }
       return reg.test(str)||reg1.test(str);
     }
     return true;
   }
 
+
+  frontend_valid()
+  {
+    if(this.name_var!=null && this.name_var!=''
+    && this.user_name_var!=null && this.user_name_var!=''
+    && this.phone_num_var!=null && this.phone_num_var!=''
+    && this.aadhar_var!=null && this.aadhar_var!=''
+    && this.pw_var!=null && this.pw_var!=''
+    && this.retype_pw_var!=null && this.retype_pw_var!=''
+    && this.name_match(this.name_var) 
+    && this.user_name_start(this.user_name_var) && this.user_name_space(this.user_name_var) && this.user_name_match(this.user_name_var)
+    && this.phone_num_match(this.phone_num_var) 
+    && this.aadhar_match(this.aadhar_var) 
+    && this.pw_var==this.retype_pw_var)
+      this.regForm_frontend_val=true;
+    else
+      this.regForm_frontend_val=false;
+
+    return true;
+  }
+
+  regForm_valid():boolean
+  {
+    console.log(this.ermsg,this.isCustomer,this.isAlreadyPresent);
+    
+    if(this.name_var!=null && this.name_var!=''
+    && this.user_name_var!=null && this.user_name_var!=''
+    && this.phone_num_var!=null && this.phone_num_var!=''
+    && this.aadhar_var!=null && this.aadhar_var!=''
+    && this.pw_var!=null && this.pw_var!=''
+    && this.retype_pw_var!=null && this.retype_pw_var!=''
+    && this.name_match(this.name_var) 
+    && this.user_name_start(this.user_name_var) && this.user_name_space(this.user_name_var) && this.user_name_match(this.user_name_var)
+    && this.phone_num_match(this.phone_num_var) 
+    && this.aadhar_match(this.aadhar_var) 
+    && this.pw_var==this.retype_pw_var
+    && this.isCustomer
+    && !this.isAlreadyPresent
+    && this.aadharMatches && this.aadharVerified
+    && !this.userNameTaken)
+      return true;
+    else
+      return false;
+  }
 
 }

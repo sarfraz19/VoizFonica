@@ -87,7 +87,7 @@
 
         <input type="button" class="btn" value="Get OTP" (click)="check()" data-toggle="modal" data-target="#myModal" />
 
-        <div *ngIf="regForm_val">
+        <div *ngIf="regForm_frontend_val">
           <div *ngIf="isAlreadyPresent" class="alert alert-danger">
             You already have an account<br>Go to <a routerLink='/login'>login page</a>
           </div>
@@ -112,6 +112,9 @@
               <input type="text" name="" placeholder="Enter OTP" />
             </div>
             <br />
+            <div *ngIf="frontend_valid()">
+
+            </div>
             <button type="submit" class="btn" data-dismiss="modal" style="color: white;"
               (click)="regForm.ngSubmit.emit()" [disabled]="!regForm_valid()">
               Register
