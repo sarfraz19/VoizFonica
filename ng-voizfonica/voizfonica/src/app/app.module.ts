@@ -23,6 +23,7 @@ import { ApiService } from './api.service';
 
 import { Home1Component } from './home1/home1.component';
 import { DongleComponent } from './dongle/dongle.component';
+import { TestComponent } from './test/test.component';
 //import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 // import { Plans2Component } from './plans2/plans2.component';
 
@@ -46,6 +47,7 @@ import { DongleComponent } from './dongle/dongle.component';
     RorbComponent,
     Home1Component,
     DongleComponent,
+    TestComponent,
     //PagenotfoundComponent,
     // Plans2Component
   ],

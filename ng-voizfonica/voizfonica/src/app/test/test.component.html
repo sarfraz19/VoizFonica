@@ -1,0 +1,10 @@
+<p>test works!</p>
+<button (click)="collapseFunction()">ex/col</button>
+<div *ngIf="!isCollapsed">
+  <input type="text" [(ngModel)]="inp" />
+  {{ inp }}<br />
+  {{ dateMessage }}
+</div>
+user name:<input type="text" [(ngModel)]="userName" />
+<button (click)="search()">click</button>
+{{ response.id }}
