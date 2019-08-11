@@ -140,3 +140,8 @@ input[type="number"]:placeholder {
     border-bottom-left-radius: 0;
     text-indent: -50px;
 }
+
+.fade
+{
+    transition-duration: 0.6s;
+}

@@ -57,15 +57,23 @@ export class CreateaccountComponent implements OnInit {
     }
 
     this.apiService.checkIsCustomer(this.phone_num_var).subscribe(
-      data=>(this.isCustomer=true,this.customer=data),
+      data=>(this.isCustomer=true,this.customer=data,this.check1()),
       error=>(this.isCustomer=false)
       );
 
+    return true;
+  }
+
+  check1()
+  {
     this.apiService.checkUserPresent(this.phone_num_var).subscribe(
       data=>(this.isAlreadyPresent=true),
-      error=>(this.isAlreadyPresent=false)
+      error=>(this.isAlreadyPresent=false,this.check2())
       );
+  }
 
+  check2()
+  {
     if(this.aadhar_var_short==this.customer.aadhar)
       this.aadharMatches=true;
     else
@@ -73,12 +81,16 @@ export class CreateaccountComponent implements OnInit {
 
     this.aadharVerified=this.customer.aadhar_verified;
 
+    if(this.aadharMatches && this.aadharVerified)
+      this.check3();
+  }
+
+  check3()
+  {
     this.apiService.checkUserNamePresent(this.user_name_var).subscribe(
       data=>(this.userNameTaken=true),
       error=>(this.userNameTaken=false)
       );
-
-     return true;
   }
 
   save(){
