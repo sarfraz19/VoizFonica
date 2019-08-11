@@ -7,6 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+  val=0;
+  changeVal(v)
+  {
+    this.val=v;
+  }
+  getVal()
+  {
+    return this.val;
+  }
+
   private baseUrl = 'http://localhost:8000/';
   httpHeaders = new HttpHeaders({ 'content-type': 'application/json' });
 

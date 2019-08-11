@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
     //private configService:CommonServiceService,
     private apiService:ApiService,
     private router:Router
-    ) { }
+    ) {
+      console.log(apiService.getVal());
+     }
 
   ngOnInit() {
     // this.loginForm=new FormGroup({
