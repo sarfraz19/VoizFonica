@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
-
+;
 @Component({
   selector: 'app-createaccount',
   templateUrl: './createaccount.component.html',
@@ -33,7 +33,11 @@ export class CreateaccountComponent implements OnInit {
   userNameTaken:boolean;
 
   constructor(private apiService:ApiService,
-    private router:Router) {}
+    private router:Router) {
+      console.log(apiService.getVal());
+      this.apiService.changeVal(2);
+      console.log(apiService.getVal());
+    }
 
   ngOnInit() {
     // this.apiService.getOnlineUsers().subscribe(data=>(this.onlineusers=data));    
