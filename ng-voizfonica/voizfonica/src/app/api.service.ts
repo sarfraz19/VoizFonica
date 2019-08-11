@@ -17,6 +17,20 @@ export class ApiService {
     return this.val;
   }
 
+  num='0';
+  getNum()
+  {
+    return this.num;
+  }
+  changeNum(n)
+  {
+    this.num=n;
+  }
+  logout()
+  {
+    this.num='0';
+  }
+
   private baseUrl = 'http://localhost:8000/';
   httpHeaders = new HttpHeaders({ 'content-type': 'application/json' });
 
@@ -63,15 +77,17 @@ export class ApiService {
       { headers: this.httpHeaders });
   }
 
-  loginUser(authData) {
-    const body = JSON.stringify(authData);
-    return this.http.post(this.baseUrl + 'auth/', body, { headers: this.httpHeaders });
+  login(un,pw) {
+    const details = {username:un,password:pw};
+    return this.http.post(this.baseUrl + 'auth/', details,
+    {headers: this.httpHeaders}
+    );
   }
 
   getPlans(): Observable<any> {
-    return this.http.get(this.baseUrl + "plan/", {
-      headers: this.httpHeaders
-    });
+    return this.http.get(this.baseUrl + "plan/", 
+    {headers: this.httpHeaders}
+    );
   }
   // getOnlineUsers():Observable<any>
   // {

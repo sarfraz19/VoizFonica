@@ -63,7 +63,7 @@ input[type="reset"]:active {
   transform: scale(0.95);
 }
 
-.txt,.txt1
+.txt,.txt1,
 input[type="text"],
 input[type="number"],
 input[type="password"] {
@@ -117,14 +117,14 @@ input[type="number"]::-webkit-inner-spin-button{
   font-size: 10pt;
 }
 
-.txt{
+/* .txt{
   width:auto;
   padding:15px;
   margin-right: 0;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: 1px solid #ddd;  
-}
+} 
 
 input[type="number"]
 {
@@ -132,4 +132,4 @@ input[type="number"]
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   text-indent: -65px;
-}
+} */

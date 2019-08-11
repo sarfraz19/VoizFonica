@@ -11,6 +11,8 @@ export class CreateaccountComponent implements OnInit {
   // onlineusers =[];
   // selected_ou={name:'',phone_num:'',pw:'',retype_pw:''};
 
+  count=0;
+
   var1="hi";
   isBtnClicked=false;
 
