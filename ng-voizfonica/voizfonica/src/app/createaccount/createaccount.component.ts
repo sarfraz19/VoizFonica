@@ -168,6 +168,18 @@ export class CreateaccountComponent implements OnInit {
     return true;
   }
 
+  pw_match(num):boolean
+  {
+    if(num!=null && num!='')
+    {
+      var str:string;
+      str=num;
+      var reg=new RegExp('^[a-zA-Z0-9]{8}$');
+      return reg.test(str);
+    }
+    return true;
+  }
+
   aadhar_match(str):boolean
   {
     if(str!=null && str!='')

@@ -77,6 +77,10 @@
           </div>
 
         </div>
+        <div *ngIf="(pw.touched || isBtnClicked) && !pw_match(pw_var)" class="text-danger">
+          Password should contains 8 characters and it can be alphabets and numbers
+        </div>
+
 
         <input type="password" name="retype_pw1" placeholder="Re-type Password" [(ngModel)]="retype_pw_var"
           #retype_pw="ngModel" required />

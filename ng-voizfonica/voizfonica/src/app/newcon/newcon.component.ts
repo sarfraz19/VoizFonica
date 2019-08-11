@@ -12,11 +12,13 @@ export class NewconComponent implements OnInit {
   address_var:string;
   pincode_var:string;
   email_var:string;
-  selectnum_var:number;
+  aadhar_var:string;
+  aadhar_var_short:string;
   preposdon_var:string;
   options=["Prepaid","Postpaid","Dongle"];
   selectplan_var:string;
   plans=["Plan 1","Plan 2","Plan 3"];
+  aadhar_verified:false;
   kycdate_var:Date;
 
   isBtnClicked=false;
@@ -67,17 +69,18 @@ export class NewconComponent implements OnInit {
     return true;
   }
 
-  selectnum_match(num):boolean
+  aadhar_match(str):boolean
   {
-    if(num!=null)
+    if(str!=null && str!='')
     {
-      var str:string;
-      str=num;
-      var reg=new RegExp('^[0-9]{10}$');
-      return reg.test(str);
+      str=str.trim();
+      var reg=new RegExp('^[0-9]{4}\\ [0-9]{4}\\ [0-9]{4}$');
+      var reg1=new RegExp('^[0-9]{12}$');
+      return reg.test(str)||reg1.test(str);
     }
     return true;
   }
+
 
   kycdate_match(date):boolean
   {
@@ -110,6 +113,7 @@ export class NewconComponent implements OnInit {
   check_valid()
   {
     this.isBtnClicked=true;
+    
     if(this.name_var!=null && this.name_var!=''
     && this.address_var!=null && this.address_var!=''
     && this.pincode_var!=null && this.pincode_var!=''
@@ -120,17 +124,23 @@ export class NewconComponent implements OnInit {
     && this.name_match(this.name_var)
     && this.pincode_match(this.pincode_var)
     && this.email_match(this.email_var)
-    && this.selectnum_match(this.selectnum_var)
+    && this.aadhar_match(this.aadhar_var)
     && this.kycdate_match(this.kycdate_var))
       this.save();
     else
       return false;
   }
 
-  save()
+  save()   
   {
+    var reg=new RegExp('^[0-9]{4}\\ [0-9]{4}\\ [0-9]{4}$');
+    this.aadhar_var_short=this.aadhar_var;
+    if(reg.test(this.aadhar_var_short))
+    {
+      this.aadhar_var_short=this.aadhar_var_short.substring(0,4)+this.aadhar_var_short.substring(5,9)+this.aadhar_var_short.substring(10,14);
+    }
     // if(this.selectnum_var!=null)
-      this.apiService.addToCustomers(this.name_var,this.address_var,this.pincode_var,this.email_var,this.selectnum_var,this.preposdon_var,this.selectplan_var,this.kycdate_var).subscribe(data=>(console.log(data)))
+      this.apiService.addToCustomers(this.name_var,this.address_var,this.pincode_var,this.email_var,this.aadhar_var_short,this.preposdon_var,this.selectplan_var,this.kycdate_var).subscribe(data=>(console.log(data)))
   }
 
   getDateTime()
