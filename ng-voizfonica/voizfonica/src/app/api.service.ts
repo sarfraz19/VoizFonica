@@ -38,14 +38,16 @@ export class ApiService {
     );
   }
 
-  addToCustomers(n, a, pin, e, num, ppd, plan, d): Observable<any> {
+  addToCustomers(n, a, pin, e, aa, ppd, plan, d): Observable<any> {
     const details = {
       name: n,
       address: a,
       pincode: pin,
+      aadhar: aa,
+      aadhar_verified:false,
       email: e,
-      select_num: num,
-      prepostdon: ppd,
+      phone_num:"0",
+      type1: ppd,
       plan: plan,
       kyc_date:d
     };

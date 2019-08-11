@@ -2,7 +2,7 @@
   <h1 class="display-4">GET A CONNECTION</h1>
 </div>
 
-<div class="container">  
+<div class="container">
   <div *ngIf="getDateTime()">
   </div>
   <form>
@@ -61,13 +61,20 @@
 
       <div class="col-md-6">
 
-        <input type="number" name="selectnum1" placeholder="Select your phone number" [(ngModel)]="selectnum_var"
-          #selectnum="ngModel" />
+        <input type="text" name="aadhar1" placeholder=" Aadhar number" [(ngModel)]="aadhar_var"
+          #aadhar="ngModel" required />
+        <div *ngIf="aadhar.invalid && (aadhar.dirty || aadhar.touched || isBtnClicked)" class="text-danger">
 
-        <div *ngIf="(selectnum.touched || isBtnClicked) && !selectnum_match(selectnum_var)" class="text-danger">
-          Enter a valid phone number
+          <div *ngIf="aadhar.errors.required">
+            Aadhar number is required
+          </div>
+
         </div>
-
+        <div *ngIf="(aadhar.touched || isBtnClicked) && !aadhar_match(aadhar_var)" class="text-danger">
+          Enter a valid aadhar number
+        </div>
+      
+        
         <select class="txt" name="preposdon1" [(ngModel)]="preposdon_var" #preposdon="ngModel" required>
           <option [ngValue]="none" disabled>Select an option</option>
           <option *ngFor="let o of options" [ngValue]="o">{{o}}</option>
@@ -96,7 +103,8 @@
           <div class="input-group-prepend">
             <span class="input-group-text">KYC Appointment</span>
           </div>
-          <input type="date" class="form-control" name="kycdate1" [(ngModel)]="kycdate_var" #kycdate="ngModel" required style="width:57%" />
+          <input type="date" class="form-control" name="kycdate1" [(ngModel)]="kycdate_var" #kycdate="ngModel" required
+            style="width:57%" />
           <div *ngIf="kycdate.invalid && (kycdate.dirty || kycdate.touched || isBtnClicked)" class="text-danger">
             <div *ngIf="kycdate.errors.required">
               Pick a Date

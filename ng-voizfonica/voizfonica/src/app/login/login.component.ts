@@ -90,6 +90,8 @@ export class LoginComponent implements OnInit {
     return true;
   }
 
+ 
+  
   // onSubmit():void{
   //   this.apiService.loginUser(this.loginForm.value).subscribe(data=>this.router.navigate(['/plans']));
   //   console.log(this.loginForm.value);
