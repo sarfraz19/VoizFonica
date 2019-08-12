@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newcon',
@@ -30,7 +31,8 @@ export class NewconComponent implements OnInit {
   yr:number;
 
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService,
+    private router:Router) { }
 
   ngOnInit() {
   }
@@ -118,6 +120,7 @@ export class NewconComponent implements OnInit {
     && this.address_var!=null && this.address_var!=''
     && this.pincode_var!=null && this.pincode_var!=''
     && this.email_var!=null && this.email_var!=''
+    && this.aadhar_var!=null && this.aadhar_var!=''
     && this.preposdon_var!=null && this.preposdon_var!=''
     && this.selectplan_var!=null && this.selectplan_var!=''
     && this.kycdate_var!=null
@@ -139,8 +142,9 @@ export class NewconComponent implements OnInit {
     {
       this.aadhar_var_short=this.aadhar_var_short.substring(0,4)+this.aadhar_var_short.substring(5,9)+this.aadhar_var_short.substring(10,14);
     }
-    // if(this.selectnum_var!=null)
-      this.apiService.addToCustomers(this.name_var,this.address_var,this.pincode_var,this.email_var,this.aadhar_var_short,this.preposdon_var,this.selectplan_var,this.kycdate_var).subscribe(data=>(console.log(data)))
+
+    this.apiService.addToCustomers(this.name_var,this.address_var,this.pincode_var,this.email_var,this.aadhar_var_short,this.preposdon_var,this.selectplan_var,this.kycdate_var).subscribe(data=>(console.log(data)));
+    this.router.navigate(['/pay']);
   }
 
   getDateTime()

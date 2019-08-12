@@ -89,13 +89,13 @@ export class CreateaccountComponent implements OnInit {
   {
     this.apiService.checkUserNamePresent(this.user_name_var).subscribe(
       data=>(this.userNameTaken=true),
-      error=>(this.userNameTaken=false)
+      error=>(this.userNameTaken=false,this.save())
       );
   }
 
   save(){
     this.apiService.createNewUser(this.name_var,this.user_name_var,this.phone_num_var,this.pw_var).subscribe(data=>(true));
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
   }
 
   // select(id)
@@ -186,7 +186,7 @@ export class CreateaccountComponent implements OnInit {
     {
       var str:string;
       str=num;
-      var reg=new RegExp('^[a-zA-Z0-9]{8}$');
+      var reg=new RegExp('^[a-zA-Z0-9]{8,15}$');
       return reg.test(str);
     }
     return true;

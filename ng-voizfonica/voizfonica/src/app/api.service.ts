@@ -10,7 +10,7 @@ export class ApiService {
   val=0;
   changeVal(v)
   {
-    this.val=v;
+    this.val=v;  
   }
   getVal()
   {
@@ -20,24 +20,46 @@ export class ApiService {
   private num='0';
   getNum()
   {
-    return this.num;
+    console.log(localStorage.getItem("num"));
+    return localStorage.getItem("num");
   }
   changeNum(n)
   {
     this.num=n;
+    localStorage.setItem("num",this.num);
+    console.log(localStorage.getItem("num"));
   }
   logout()
   {
     this.num='0';
+    localStorage.setItem("num",this.num);
+    console.log(localStorage.getItem("num"));
   }
+
+
+  private typeOfCustomer='';
+  getType()
+  {
+    console.log(localStorage.getItem("typeOfCustomer"));
+    return localStorage.getItem("typeOfCustomer");
+  }
+  changeType(t)
+  {
+    this.typeOfCustomer=t;
+    localStorage.setItem("typeOfCustomer",this.typeOfCustomer);
+    console.log(localStorage.getItem("typeOfCustomer"));
+  }
+
 
   private baseUrl = 'http://localhost:8000/';
   httpHeaders = new HttpHeaders({ 'content-type': 'application/json' });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    
+}
 
   createNewUser(n, un, pn, pw): Observable<any> {
-    const details = { username: pn, password: pw, first_name: n, last_name: un };
+    const details = { username: pn, password: pw, first_name: n, last_name: un, email:pw+'@kk.in'};
     return this.http.post<any>(this.baseUrl + 'users/', details,
       { headers: this.httpHeaders }
     );

@@ -1,39 +1,15 @@
-<!-- <div class="text-center alert-light" style="padding:2%"> -->
+<div *ngIf="num!='0'">
+
 <div class="container-fluid jumb">
   <div class="row">
     <div class="col-md-4">
       <div class="card">
         <div class="card-horizontal">
-          <!-- <div class="img-square-wrapper" style="padding: 10px">
-                  <img
-                    class=""
-                    src="../assets/images/eagle.jpg"
-                    height="100px"
-                    width="100px"
-                    alt="Card image cap"
-                  />
-                </div> -->
-          <div class="card-body" style="text-align: left;">
+           <div class="card-body" style="text-align: left;">
             <label><h5>Vishnu priya</h5></label><br />
             <label><h5>9095487632</h5></label><br />
             <label><h5>Postpaid</h5></label>
-            <!-- <table>
-                    <tr>
-                      <td>Name</td>
-                      <td>:</td>
-                      <td>Vishnu priya</td>
-                    </tr>
-                    <tr>
-                      <td>Phone No</td>
-                      <td>:</td>
-                      <td>9092876584</td>
-                    </tr>
-                    <tr>
-                      <td>Plan</td>
-                      <td>:</td>
-                      <td>Prepaid</td>
-                    </tr>
-                  </table> -->
+            
           </div>
           <div class="card-body" style="padding: 35px;">
             <label><h4>Balance</h4></label><br />
@@ -207,6 +183,13 @@
     </div>
   </div>
 </div>
+
+</div>
+
+<div *ngIf="num=='0'" class="container text-center display-4" style="margin-top:12%">
+    Please login to view this page
+  </div>
+  
 <script
   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

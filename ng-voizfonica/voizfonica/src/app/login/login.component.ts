@@ -83,12 +83,13 @@ export class LoginComponent implements OnInit {
   login()
   {
     this.apiService.changeNum(this.user.username);
-    if(this.preposdon.type1=="Prepaid")
-      this.router.navigate(['/prepaid']);
-    else if(this.preposdon.type1=="Postpaid")
+    this.apiService.changeType(this.preposdon.type1);
+    // if(this.preposdon.type1=="Prepaid")
+    //   this.router.navigate(['/prepaid']);
+    // else if(this.preposdon.type1=="Postpaid")
       this.router.navigate(['/postpaid']);
-    else if(this.preposdon.type1=="Dongle")
-      this.router.navigate(['/dongle']);      
+    // else if(this.preposdon.type1=="Dongle")
+    //   this.router.navigate(['/dongle']);      
   }
 
   phone_or_username_match(num): boolean {

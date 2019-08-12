@@ -20,6 +20,8 @@
 }
 .btn1
 {
+  outline:none;
+  border:none;
   width:90%; 
   min-height: 25%;  
   min-width:80px;

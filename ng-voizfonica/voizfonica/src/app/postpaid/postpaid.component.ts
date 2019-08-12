@@ -8,9 +8,8 @@ import { ApiService } from '../api.service';
 })
 export class PostpaidComponent implements OnInit {
 
-  constructor(private apiService:ApiService) {
-    console.log(this.apiService.getNum());
-  }
+  num='0';
+  constructor(private apiService:ApiService) {this.num=this.apiService.getNum(); }
 
   ngOnInit() {
   }

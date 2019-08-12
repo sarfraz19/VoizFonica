@@ -1,4 +1,6 @@
-<div class="container-fluid">
+<div *ngIf="num!='0'">
+
+<div class="container-fluid jumb">
     <h1 class="display-4" style="text-align:center">BILL INQUIRY</h1>
 </div>
 <!--comment1-->
@@ -41,3 +43,9 @@
     </div>
 
 </form>
+
+</div>
+
+<div *ngIf="num=='0'" class="container text-center display-4" style="margin-top:12%">
+  Please login to view this page
+</div>
