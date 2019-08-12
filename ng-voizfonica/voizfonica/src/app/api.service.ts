@@ -17,7 +17,7 @@ export class ApiService {
     return this.val;
   }
 
-  num='0';
+  private num='0';
   getNum()
   {
     return this.num;

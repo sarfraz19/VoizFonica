@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   poru_var: string;
   pw_var: string;
-  user = { username: '', first_name: '' };
+  user = { username: ''};
   preposdon = { type1: '' };
 
   isBtnClicked = false;
@@ -53,7 +53,8 @@ export class LoginComponent implements OnInit {
       );
     }
     else {
-      this.apiService.checkUserPresent(this.poru_var).subscribe(
+      var pn=this.poru_var.substring(this.poru_var.length-10,this.poru_var.length);
+      this.apiService.checkUserPresent(pn).subscribe(
         data => (this.user = data, this.isUser = true,this.checkPass()
           //,ele.click()
         ),
