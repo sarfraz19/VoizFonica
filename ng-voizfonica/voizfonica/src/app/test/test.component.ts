@@ -1,3 +1,4 @@
+import { ApiService } from "./../api.service";
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 
@@ -13,23 +14,32 @@ export class TestComponent implements OnInit {
   data: string;
   userName: string = "";
   response: any;
-  constructor(private http: HttpClient) {
-    setInterval(() => {
-      let curret = new Date();
-      this.dateMessage = curret.toDateString() + " " + curret.toTimeString();
-    }, 1000);
+  value: any;
+  str: any;
+  array = [];
+  constructor(private http: HttpClient, private apiservice: ApiService) {
+    // setInterval(() => {
+    //   let curret = new Date();
+    //   this.dateMessage = curret.toDateString() + " " + curret.toTimeString();
+    // }, 1000);
+    this.apiservice.getDetails().subscribe(value => {
+      this.value = value;
+      console.log(this.value);
+      this.str = value[1].array_data;
+      this.array = this.str.split(",");
+    });
   }
 
-  collapseFunction() {
-    this.isCollapsed = !this.isCollapsed;
-  }
-  search() {
-    this.http
-      .get("https://api.github.com/users/" + this.userName)
-      .subscribe(response => {
-        this.response = response;
-        console.log(this.response);
-      });
-  }
+  // collapseFunction() {
+  //   this.isCollapsed = !this.isCollapsed;
+  // }
+  // search() {
+  //   this.http
+  //     .get("https://api.github.com/users/" + this.userName)
+  //     .subscribe(response => {
+  //       this.response = response;
+  //       console.log(this.response);
+  //     });
+  // }
   ngOnInit() {}
 }

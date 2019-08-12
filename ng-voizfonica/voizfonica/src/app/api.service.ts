@@ -14,7 +14,10 @@ export class ApiService {
     return this.val;
   }
 
-  num = "9898989898";
+  private num = "9092873062";
+  getNum() {
+    return this.num;
+  }
 
   private baseUrl = "http://localhost:8000/";
   httpHeaders = new HttpHeaders({ "content-type": "application/json" });
@@ -79,6 +82,30 @@ export class ApiService {
 
   getPlans(): Observable<any> {
     return this.http.get(this.baseUrl + "plan/", {
+      headers: this.httpHeaders
+    });
+  }
+
+  getDetails(): Observable<any> {
+    return this.http.get(this.baseUrl + "array/", {
+      headers: this.httpHeaders
+    });
+  }
+
+  getPrepaid(): Observable<any> {
+    return this.http.get(this.baseUrl + "prepaid/", {
+      headers: this.httpHeaders
+    });
+  }
+
+  getPostpaid(): Observable<any> {
+    return this.http.get(this.baseUrl + "postpaid/", {
+      headers: this.httpHeaders
+    });
+  }
+
+  getDongle(): Observable<any> {
+    return this.http.get(this.baseUrl + "dongle/", {
       headers: this.httpHeaders
     });
   }

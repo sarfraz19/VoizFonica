@@ -1,43 +1,20 @@
-<!-- <div class="text-center alert-light" style="padding:2%"> -->
 <div class="container-fluid jumb">
   <div class="row">
     <div class="col-md-4">
       <div class="card">
         <div class="card-horizontal">
-          <!-- <div class="img-square-wrapper" style="padding: 10px">
-                  <img
-                    class=""
-                    src="../assets/images/eagle.jpg"
-                    height="100px"
-                    width="100px"
-                    alt="Card image cap"
-                  />
-                </div> -->
           <div class="card-body" style="text-align: left;">
-            <label><h5>Vishnu priya</h5></label><br />
-            <label><h5>9095487632</h5></label><br />
-            <label><h5>Postpaid</h5></label>
-            <!-- <table>
-                    <tr>
-                      <td>Name</td>
-                      <td>:</td>
-                      <td>Vishnu priya</td>
-                    </tr>
-                    <tr>
-                      <td>Phone No</td>
-                      <td>:</td>
-                      <td>9092876584</td>
-                    </tr>
-                    <tr>
-                      <td>Plan</td>
-                      <td>:</td>
-                      <td>Prepaid</td>
-                    </tr>
-                  </table> -->
+            <label
+              ><h5>{{ cus.name }}</h5></label
+            ><br />
+            <label
+              ><h5>{{ cus.phone_num }}</h5></label
+            ><br />
+            <label><h5>{{cus.type1}}</h5></label>
           </div>
           <div class="card-body" style="padding: 35px;">
             <label><h4>Balance</h4></label><br />
-            <label><h4>$0.00</h4></label><br />
+            <label><h4>{{cus.balance}}</h4></label><br />
           </div>
         </div>
       </div>
@@ -74,9 +51,10 @@
     <div class="col-md-4 text-center">
       <div class="container">
         <font size="5">Your present pack :</font><br />
-        <label>Info</label><br />
+        <label>{{cus.presentPack}}</label><br />
         <font size="5">Expires :</font>
-        <label>5</label>
+        <label>{{cus.expiriesIn}}</label>
+        <div *ngIf = "cus.type1 ==='Postpaid'">
         <div class="row">
           <div class="col-md-6">
             <a routerLink="/billpay">
@@ -92,6 +70,7 @@
               </button></a
             >
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -125,9 +104,9 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td>9092856412</td>
-                  <td>10/02/19</td>
-                  <td>10min</td>
+                  <td>{{arrayCall[0]}}</td>
+                  <td>{{arrayCall[1]}}</td>
+                  <td>{{arrayCall[2]}}</td>
                   <td></td>
                 </tr>
               </table>
@@ -160,9 +139,9 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td>10mb</td>
-                  <td>10/02/19</td>
-                  <td>10min</td>
+                  <td>{{arrayData[0]}}</td>
+                  <td>{{arrayData[1]}}</td>
+                  <td>{{arrayData[2]}}</td>
                   <td></td>
                 </tr>
               </table>
@@ -194,9 +173,9 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td>9092856412</td>
-                  <td>10/02/19</td>
-                  <td>10</td>
+                  <td>{{arraySms[0]}}</td>
+                  <td>{{arraySms[1]}}</td>
+                  <td>{{arraySms[2]}}</td>
                   <td></td>
                 </tr>
               </table>
