@@ -29,12 +29,7 @@ export class ApiService {
     localStorage.setItem("num",this.num);
     console.log(localStorage.getItem("num"));
   }
-  logout()
-  {
-    this.num='0';
-    localStorage.setItem("num",this.num);
-    console.log(localStorage.getItem("num"));
-  }
+  
 
 
   private typeOfCustomer='';
@@ -46,6 +41,18 @@ export class ApiService {
   changeType(t)
   {
     this.typeOfCustomer=t;
+    localStorage.setItem("typeOfCustomer",this.typeOfCustomer);
+    console.log(localStorage.getItem("typeOfCustomer"));
+  }
+
+
+
+  logout()
+  {
+    this.num='0';
+    this.typeOfCustomer='';
+    localStorage.setItem("num",this.num);
+    console.log(localStorage.getItem("num"));
     localStorage.setItem("typeOfCustomer",this.typeOfCustomer);
     console.log(localStorage.getItem("typeOfCustomer"));
   }
@@ -108,11 +115,24 @@ export class ApiService {
     );
   }
 
-  getPlans(): Observable<any> {
-    return this.http.get(this.baseUrl + "plan/", 
-    {headers: this.httpHeaders}
-    );
+  getPrepaid(): Observable<any> {
+    return this.http.get(this.baseUrl + "prepaid/", {
+      headers: this.httpHeaders
+    });
   }
+
+  getPostpaid(): Observable<any> {
+    return this.http.get(this.baseUrl + "postpaid/", {
+      headers: this.httpHeaders
+    });
+  }
+
+  getDongle(): Observable<any> {
+    return this.http.get(this.baseUrl + "dongle/", {
+      headers: this.httpHeaders
+    });
+  }
+
   // getOnlineUsers():Observable<any>
   // {
   //   return this.http.get<any>(this.baseUrl+'onlineusers/',
