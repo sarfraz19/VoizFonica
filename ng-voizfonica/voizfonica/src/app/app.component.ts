@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,11 @@ export class AppComponent {
   vertical=['My Account','Plans Available','Recharge/Bill Payment','Get a new Connection','Help & Support'];
   horizontal=['Home','About Us','Contact Us'];
 
-  constructor(private router:Router){
+  num='0';
 
+  constructor(private router:Router,
+    private apiService:ApiService){
+      this.num=this.apiService.getNum();      
   }
 
   fn(){
@@ -21,5 +25,16 @@ export class AppComponent {
     return true;
     else
     return false;
+  }
+
+  liveNum()
+  {
+    this.num=this.apiService.getNum();      
+    return true;
+  }
+
+  logout()
+  {
+    this.apiService.logout();
   }
 }
