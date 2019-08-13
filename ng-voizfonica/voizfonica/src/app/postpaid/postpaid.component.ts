@@ -17,9 +17,11 @@ export class PostpaidComponent implements OnInit {
     this.apiservice.checkIsCustomer(this.number).subscribe(data => {
       this.cus = data;
       console.log(this.cus);
-      this.arrayCall = this.cus.callUsage.split(",");
-      this.arrayData = this.cus.dataUsage.split(",");
-      this.arraySms = this.cus.smsUsage.split(",");
+      this.arrayCall = this.cus.callUsage.split(";");
+      console.log(this.arrayCall);
+
+      this.arrayData = this.cus.dataUsage.split(";");
+      this.arraySms = this.cus.smsUsage.split(";");
     });
   }
 

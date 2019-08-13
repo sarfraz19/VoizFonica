@@ -8,33 +8,38 @@ import { Component, OnInit } from "@angular/core";
   providers: [ApiService]
 })
 export class PlansComponent implements OnInit {
-  plans = [];
+  plans1 = [];
+  plans2 = [];
+  plans3 = [];
   number: string;
-  val: string;
+  type: string;
+  var1: string;
   constructor(private api: ApiService) {
     // this.getPlans();
     this.number = this.api.getNum();
-    this.api.checkIsCustomer(this.number).subscribe(data => {
-      this.val = data.type1;
-      console.log(this.val);
-      if (this.val == "Postpaid") {
-        this.getPostpaid();
-        console.log("postpaid pack");
-      } else if (this.val == "Prepaid") {
-        this.getPrepaid();
-        console.log("prepaid pack");
-      } else {
-        this.getDongle();
-        console.log("dongle pack");
-      }
-    });
+    this.type = this.api.getType();
+    if (this.type == "") {
+      this.getPostpaid();
+      this.getPrepaid();
+      this.getDongle();
+    } else if (this.type == "Postpaid") {
+      this.getPostpaid();
+    } else if (this.type == "Prepaid") {
+      this.getPrepaid();
+    } else if (this.type == "Dongle") {
+      this.getDongle();
+    }
+  }
+
+  func(var1) {
+    this.api.changeAmt(var1);
   }
 
   getPostpaid = () => {
     this.api.getPostpaid().subscribe(
       data => {
-        this.plans = data;
-        console.log(this.plans);
+        this.plans1 = data;
+        console.log(this.plans1);
       },
       error => {
         console.log(error);
@@ -45,8 +50,8 @@ export class PlansComponent implements OnInit {
   getPrepaid = () => {
     this.api.getPrepaid().subscribe(
       data => {
-        this.plans = data;
-        console.log(this.plans);
+        this.plans2 = data;
+        console.log(this.plans2);
       },
       error => {
         console.log(error);
@@ -57,8 +62,8 @@ export class PlansComponent implements OnInit {
   getDongle = () => {
     this.api.getDongle().subscribe(
       data => {
-        this.plans = data;
-        console.log(this.plans);
+        this.plans3 = data;
+        console.log(this.plans3);
       },
       error => {
         console.log(error);

@@ -16,7 +16,7 @@ import { NewconComponent } from "./newcon/newcon.component";
 import { PayComponent } from "./pay/pay.component";
 import { RorbComponent } from "./rorb/rorb.component";
 import { from } from "rxjs";
-import { TestComponent } from './test/test.component';
+import { TestComponent } from "./test/test.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: "pay", component: PayComponent },
   { path: "rorb", component: RorbComponent },
   { path: "dongle", component: DongleComponent },
-  {path: "test", component: TestComponent}
+  { path: "test", component: TestComponent }
 ];
 
 @NgModule({

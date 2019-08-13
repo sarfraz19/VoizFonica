@@ -10,23 +10,30 @@
             <label
               ><h5>{{ cus.phone_num }}</h5></label
             ><br />
-            <label><h5>{{cus.type1}}</h5></label>
+            <label
+              ><h5>{{ cus.type1 }}</h5></label
+            >
           </div>
           <div class="card-body" style="padding: 35px;">
             <label><h4>Balance</h4></label><br />
-            <label><h4>{{cus.balance}}</h4></label><br />
+            <label
+              ><h4>{{ cus.balance }}</h4></label
+            ><br />
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-1"></div>
-    <div class="col-md-2">
+    <div *ngIf="cus.type1 == 'Prepaid'" class="col-md-2">
       <a routerLink="/recharge">
         <button class="btn">
           <h4>Recharge<br />Now</h4>
         </button></a
       >
     </div>
+
+    <div *ngIf="cus.type1 != 'Prepaid'" class="col-md-1"></div>
+
     <div class="col-md-2">
       <a routerLink="/report">
         <button class="btn">
@@ -34,6 +41,9 @@
         </button></a
       >
     </div>
+
+    <div *ngIf="cus.type1 != 'Prepaid'" class="col-md-1"></div>
+
     <div class="col-md-2">
       <a routerLink="/plans">
         <button class="btn">
@@ -50,27 +60,31 @@
   <div class="row" style="padding: 20px;">
     <div class="col-md-4 text-center">
       <div class="container">
-        <font size="5">Your present pack :</font><br />
-        <label>{{cus.presentPack}}</label><br />
-        <font size="5">Expires :</font>
-        <label>{{cus.expiriesIn}}</label>
-        <div *ngIf = "cus.type1 ==='Postpaid'">
-        <div class="row">
-          <div class="col-md-6">
-            <a routerLink="/billpay">
-              <button class="btn">
-                <h4>Bill<br />Payment</h4>
-              </button></a
-            >
+        <font size="5">Your present pack : </font>
+        <font size="5"
+          ><I>{{ cus.plan }}</I></font
+        ><br />
+        <font size="5">Expires in: </font>
+        <font size="5"
+          ><I>{{ cus.expiriesIn }}</I></font
+        >
+        <div *ngIf="cus.type1 === 'Postpaid'">
+          <div class="row">
+            <div class="col-md-6">
+              <a routerLink="/billpay">
+                <button class="btn">
+                  <h4>Bill<br />Payment</h4>
+                </button></a
+              >
+            </div>
+            <div class="col-md-6">
+              <a routerLink="/billinquiry">
+                <button class="btn">
+                  <h4>Bill<br />Inquiry</h4>
+                </button></a
+              >
+            </div>
           </div>
-          <div class="col-md-6">
-            <a routerLink="/billinquiry">
-              <button class="btn">
-                <h4>Bill<br />Inquiry</h4>
-              </button></a
-            >
-          </div>
-        </div>
         </div>
       </div>
     </div>
@@ -102,11 +116,11 @@
                   <th>Duration</th>
                   <th></th>
                 </tr>
-                <tr>
+                <tr *ngFor="let c of arrayCall">
                   <td></td>
-                  <td>{{arrayCall[0]}}</td>
-                  <td>{{arrayCall[1]}}</td>
-                  <td>{{arrayCall[2]}}</td>
+                  <td>{{ c.substring(1, 11) }}</td>
+                  <td>{{ c.substring(12, 20) }}</td>
+                  <td>{{ c.substring(21, 26) }}</td>
                   <td></td>
                 </tr>
               </table>
@@ -132,16 +146,18 @@
               <table class="table">
                 <tr>
                   <th></th>
-                  <th>data usage</th>
+                  <th></th>
                   <th>Date</th>
+                  <th></th>
                   <th>Duration</th>
                   <th></th>
                 </tr>
-                <tr>
+                <tr *ngFor="let c of arrayData">
                   <td></td>
-                  <td>{{arrayData[0]}}</td>
-                  <td>{{arrayData[1]}}</td>
-                  <td>{{arrayData[2]}}</td>
+                  <td></td>
+                  <td>{{ c.substring(1, 9) }}</td>
+                  <td></td>
+                  <td>{{ c.substring(10, 14) }}</td>
                   <td></td>
                 </tr>
               </table>
@@ -168,14 +184,14 @@
                   <th></th>
                   <th>Phone no</th>
                   <th>Date</th>
-                  <th>quantity</th>
+                  <th>No. of SMS Sent</th>
                   <th></th>
                 </tr>
-                <tr>
+                <tr *ngFor="let c of arraySms">
                   <td></td>
-                  <td>{{arraySms[0]}}</td>
-                  <td>{{arraySms[1]}}</td>
-                  <td>{{arraySms[2]}}</td>
+                  <td>{{ c.substring(1, 11) }}</td>
+                  <td>{{ c.substring(12, 20) }}</td>
+                  <td>{{ c.substring(21, 23) }}</td>
                   <td></td>
                 </tr>
               </table>

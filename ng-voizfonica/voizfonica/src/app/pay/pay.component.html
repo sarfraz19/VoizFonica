@@ -1,16 +1,17 @@
-<div class="container-fluid jumb">
+<div *ngIf="amt != '0'">
+  <div class="container-fluid jumb">
     <h1 class="display-4">PAYMENT</h1>
-</div>
-<form>
+  </div>
+  <form>
     <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="../assets/images/payment.jpg" class="hide">
-            </div>
-            <div class="col-md-6">
-                <div class="blueoutline">
-                <table>
-                <!-- <tr> 
+      <div class="row">
+        <div class="col-md-6">
+          <img src="../assets/images/payment.jpg" class="hide" />
+        </div>
+        <div class="col-md-6">
+          <div class="blueoutline">
+            <table>
+              <!-- <tr> 
                 <th>Select Bank</th>
                 <th class="nopad">:</th>
                 <td>
@@ -28,7 +29,7 @@
                         
                     
             </tr> -->
-            <!-- <tr>
+              <!-- <tr>
                 <th>Mode of payment</th>
                 <th class="nopad">:</th>
                 <td>
@@ -42,74 +43,137 @@
                            Select the mode of payment   </div>
                   
                           </div> -->
-                  
-        
-            <tr><th><label>Card Number</label></th>
+
+              <tr>
+                <th><label>Card Number</label></th>
                 <th class="nopad">:</th>
-            <td><input type="number" name="card1" [(ngModel)]="card_var" #card="ngModel"class="form-control" placeholder="Valid Card Number"
-                        required autofocus style="max-width: 100%;" /></td></tr>
-             <div *ngIf="card.invalid && (card.dirty || card.touched || isBtnClicked)" class="text-danger">
+                <td>
+                  <input
+                    type="number"
+                    name="card1"
+                    [(ngModel)]="card_var"
+                    #card="ngModel"
+                    class="form-control"
+                    placeholder="Valid Card Number"
+                    required
+                    autofocus
+                    style="max-width: 100%;"
+                  />
+                </td>
+              </tr>
+              <div
+                *ngIf="
+                  card.invalid && (card.dirty || card.touched || isBtnClicked)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="card.errors.required">
+                  Card number is required
+                </div>
+              </div>
+              <div
+                *ngIf="(card.touched || isBtnClicked) && !card_match(card_var)"
+                class="text-danger"
+              >
+                Enter a valid card number
+              </div>
 
-                                <div *ngIf="card.errors.required">
-                                  Card number is required
-                                </div>
-                                </div>
-                                <div *ngIf="(card.touched || isBtnClicked) && !card_match(card_var)" class="text-danger">
-                                        Enter a valid card number
-                                      </div>
-
-            <tr><th><label>Expiry Date</label></th>
+              <tr>
+                <th><label>Expiry Date</label></th>
                 <th class="nopad">:</th>
-                <td><input type="number"class="form-control"  placeholder="MM//YY"  style="max-width: 100%" /></td>
-                            </tr>
-                            <tr><th>CVV</th>
-                                <th class="nopad">:</th>
-                            <td><input type="number" name="cvv1" [(ngModel)]="cvv_var" #cvv="ngModel"class="form-control"  placeholder="CVV"  style="max-width: 100%" /></td></tr>
-                            <div *ngIf="cvv.invalid && (cvv.dirty || cvv.touched || isBtnClicked)" class="text-danger">
-
-                                    <div *ngIf="cvv.errors.required">
-                                      CVV is required
-                                    </div>
-                                    </div>
-                                    <div *ngIf="(cvv.touched || isBtnClicked) && !cvv_match(cvv_var)" class="text-danger">
-                                            Enter a valid cvv
-                                          </div>
-                            <tr>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="MM//YY"
+                    style="max-width: 100%"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>CVV</th>
+                <th class="nopad">:</th>
+                <td>
+                  <input
+                    type="number"
+                    name="cvv1"
+                    [(ngModel)]="cvv_var"
+                    #cvv="ngModel"
+                    class="form-control"
+                    placeholder="CVV"
+                    style="max-width: 100%"
+                  />
+                </td>
+              </tr>
+              <div
+                *ngIf="
+                  cvv.invalid && (cvv.dirty || cvv.touched || isBtnClicked)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="cvv.errors.required">
+                  CVV is required
+                </div>
+              </div>
+              <div
+                *ngIf="(cvv.touched || isBtnClicked) && !cvv_match(cvv_var)"
+                class="text-danger"
+              >
+                Enter a valid cvv
+              </div>
+              <tr>
                 <th>Amount</th>
                 <th class="nopad">:</th>
-                <td>Rs.300</td>
-                </tr>
-            <tr>
+                <td>{{ amt }}</td>
+              </tr>
+              <tr>
                 <th></th>
                 <th></th>
-                <td><button class="btn btn-info " style="min-width:90px;min-height:25% " data-toggle="modal" data-target="#myModal">Confirm Payment</button>
-                    <div class="modal fade" id="myModal">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                          
-                                <!-- Modal Header -->
-                            
-                                <!-- Modal body -->
-                                <div class="modal-body">
-                                  <div style="font-size:20pt;padding-bottom:2%">Payment Successful</div>
-                                  <br>
-                                  <a routerLink=''><button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                                </a>
-                                </div>
-                          
-                                <!-- Modal footer -->
-                                
-                          
-                              </div>
-                            </div>
-                          </div>
-                
-                </td>
-            </tr>
-        </table>
-    </div>
-    </div>
-    </div>
-    </div>
+                <td>
+                  <button
+                    class="btn btn-info "
+                    style="min-width:90px;min-height:25% "
+                    data-toggle="modal"
+                    data-target="#myModal"
+                    (click)="change()"
+                  >
+                    Confirm Payment
+                  </button>
+                  <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <!-- Modal Header -->
 
-</form>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <div style="font-size:20pt;padding-bottom:2%">
+                            Payment Successful
+                          </div>
+                          <br />
+                          <a routerLink=""
+                            ><button
+                              type="button"
+                              class="btn btn-info"
+                              data-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                          </a>
+                        </div>
+
+                        <!-- Modal footer -->
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="amt == '0'" class="text-center">
+  <h1>Page Not Available !</h1>
+</div>

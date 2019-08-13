@@ -19,6 +19,29 @@ export class ApiService {
     return this.num;
   }
 
+  private typeOfCustomer = "Prepaid";
+  getType() {
+    return this.typeOfCustomer;
+  }
+
+  private amt = "0";
+  getAmt() {
+    return localStorage.getItem("amt");
+  }
+  changeAmt(val) {
+    this.amt = val;
+    localStorage.setItem("amt", this.amt);
+  }
+
+  private prevpage = "";
+  getPage() {
+    return localStorage.getItem("prevpage");
+  }
+  changePage(val) {
+    this.prevpage = val;
+    localStorage.setItem("prevpage", this.prevpage);
+  }
+
   private baseUrl = "http://localhost:8000/";
   httpHeaders = new HttpHeaders({ "content-type": "application/json" });
 
@@ -66,12 +89,53 @@ export class ApiService {
       phone_num: "0",
       type1: ppd,
       plan: plan,
-      kyc_date: d
+      kyc_date: d,
+      balance: "Rs.0",
+      expiriesIn: "0",
+      callUsage: "0",
+      dataUsage: "0",
+      smsUsage: "0",
+      bill: "0"
     };
     return this.http.post<any>(this.baseUrl + "customersbynum/", details, {
       headers: this.httpHeaders
     });
   }
+
+  updateCustomersBill(det, bill): Observable<any> {
+    const details = {
+      name: det.name,
+      address: det.address,
+      pincode: det.pincode,
+      aadhar: det.aadhar,
+      aadhar_verified: det.aadhar_verified,
+      email: det.email,
+      phone_num: det.phone_num,
+      type1: det.type1,
+      plan: det.plan,
+      kyc_date: det.kyc_date,
+      balance: det.balance,
+      expiriesIn: det.expiriesIn,
+      callUsage: det.callUsage,
+      dataUsage: det.dataUsage,
+      smsUsage: det.smsUsage,
+      bill: bill
+    };
+    return this.http.put<any>(
+      this.baseUrl + "customersbynum/" + det.phone_num + "/",
+      details,
+      {
+        headers: this.httpHeaders
+      }
+    );
+  }
+
+  // updateBill(det,str):Observable<any>{
+  //   const dettails={
+  //     name:det.name,
+  //     address:det.address,
+  // }
+  // }
 
   loginUser(authData) {
     const body = JSON.stringify(authData);
