@@ -7,12 +7,17 @@ import { ApiService } from '../api.service';
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent implements OnInit {
-  
-  num='0';
-  constructor(private apiService:ApiService) {this.num=this.apiService.getNum(); }
+  complaint_var:string;
+
+
+  constructor(private apiService:ApiService) { }
 
   ngOnInit() {
     
+  }
+  register()
+  {
+    this.apiService.postComplaint(this.complaint_var).subscribe(data=>(true));
   }
 
 }

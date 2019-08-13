@@ -46,6 +46,19 @@ export class ApiService {
   }
 
 
+  private amt='0';
+  getAmt()
+  {
+    console.log(localStorage.getItem("amt"));
+    return localStorage.getItem("amt");
+  }
+  changeAmt(a)
+  {
+    this.amt=a;
+    localStorage.setItem("amt",this.amt);
+    console.log(localStorage.getItem("amt"));
+  }
+
 
   logout()
   {
@@ -115,6 +128,54 @@ export class ApiService {
     );
   }
 
+
+  getCredit(cn):Observable<any>{
+    return this.http.get(this.baseUrl + "creditbynum/"+ cn + "/",
+    {headers: this.httpHeaders}
+    );
+  } 
+
+  changeCredit(id,cn,cvv,pin,bal):Observable<any>{
+    const detail={cardnumber: cn,
+    cvv: cvv,
+    pinnumber: pin,
+    balance: bal};
+    return this.http.put<any>(this.baseUrl + "credit/"+id+"/",detail,
+    {headers:this.httpHeaders}
+    );
+
+  }
+
+  getBank(b,an):Observable<any>{
+    return this.http.get(this.baseUrl + b + "bynum/" + an + "/",
+    {headers: this.httpHeaders}
+    );
+  }
+
+  changeBank(b,id,an,pw,bal):Observable<any>{
+    const detail={accountnumber:an,password:pw,balance:bal};
+    return this.http.put<any>(this.baseUrl + b + "/" + id + "/",detail,
+    {headers:this.httpHeaders}
+    );
+  }
+
+  postComplaint(c):Observable<any>
+  {
+    const details={phone_num:this.getNum(),msg:c};
+    return this.http.post<any>(this.baseUrl + "complaint/",details,
+    {headers: this.httpHeaders}
+    );
+  }
+
+  getFaqs():Observable<any>
+  {
+    return this.http.get(this.baseUrl + "faq/",
+    {headers:this.httpHeaders}
+    );
+  }
+
+
+  
   getPrepaid(): Observable<any> {
     return this.http.get(this.baseUrl + "prepaid/", {
       headers: this.httpHeaders
