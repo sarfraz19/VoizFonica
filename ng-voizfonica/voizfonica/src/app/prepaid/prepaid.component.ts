@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-prepaid',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrepaidComponent implements OnInit {
 
-  constructor() { }
+  num='0';
+  constructor(private apiService:ApiService) {this.num=this.apiService.getNum(); console.log(this.num);
+  }
 
   ngOnInit() {
   }

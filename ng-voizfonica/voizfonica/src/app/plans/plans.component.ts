@@ -13,7 +13,10 @@ export class PlansComponent implements OnInit {
   plans3 = [];
   number: string;
   type: string;
+<<<<<<< HEAD
   var1: string;
+=======
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
   constructor(private api: ApiService) {
     // this.getPlans();
     this.number = this.api.getNum();
@@ -31,6 +34,7 @@ export class PlansComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   func(var1) {
     this.api.changeAmt(var1);
   }
@@ -62,6 +66,35 @@ export class PlansComponent implements OnInit {
   getDongle = () => {
     this.api.getDongle().subscribe(
       data => {
+=======
+  getPostpaid = () => {
+    this.api.getPostpaid().subscribe(
+      data => {
+        this.plans1 = data;
+        console.log(this.plans1);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  };
+
+  getPrepaid = () => {
+    this.api.getPrepaid().subscribe(
+      data => {
+        this.plans2 = data;
+        console.log(this.plans2);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  };
+
+  getDongle = () => {
+    this.api.getDongle().subscribe(
+      data => {
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
         this.plans3 = data;
         console.log(this.plans3);
       },

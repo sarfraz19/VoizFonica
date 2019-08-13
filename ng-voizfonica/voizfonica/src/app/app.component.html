@@ -1,6 +1,8 @@
 <div class="container" style="margin-bottom:56px;">
   <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-    <a class="navbar-brand" href="#">VOIZFONICA</a>
+    <a class="navbar-brand" routerLink='/home'>
+      <img src="../assets/images/logo_blue.png" width="80px" height="30px" alt="..." style="margin-left:20px" />
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -19,14 +21,13 @@
       style="text-align:center;"
     >
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item text-secondary">
-          hiiiiiiiiiiiii
+        <li *ngIf="liveNum()" class="nav-item text-secondary">
+          hiiiiii
         </li>
         <li class="nav-item option">
           <a
             class="nav-link"
             routerLink="/plans"
-            data-target="#navbarSupportedContent"
             >Plans Available</a
           >
         </li>
@@ -37,7 +38,6 @@
           <a
             class="nav-link"
             routerLink="/rorb"
-            data-target="#navbarSupportedContent"
             >Recharge / Bill Payment</a
           >
         </li>
@@ -48,7 +48,6 @@
           <a
             class="nav-link"
             routerLink="/newcon"
-            data-target="#navbarSupportedContent"
             >Get a Connection</a
           >
         </li>
@@ -59,16 +58,29 @@
           <a
             class="nav-link"
             routerLink="/faq"
-            data-target="#navbarSupportedContent"
             >Help and Support</a
           >
         </li>
         <li class="nav-item text-secondary">
           hiiiiiiiiiiiii
         </li>
-        <li class="nav-item option">
+
+
+        <li *ngIf="num=='0'" class="nav-item option">
           <a class="nav-link" routerLink="/login">Login / Sign Up</a>
         </li>
+
+
+        <li *ngIf="num!='0'" class="nav-item option">
+          <a class="nav-link" routerLink="/postpaid">My Account</a>
+        </li>
+        <li *ngIf="num!='0'" class="nav-item text-secondary">
+          hiiiiiiiiiiiii
+        </li>
+        <li *ngIf="num!='0'" class="nav-item option">
+          <a class="nav-link" (click)="logout()" routerLink="/home">Logout</a>
+        </li>
+
       </ul>
     </div>
   </nav>

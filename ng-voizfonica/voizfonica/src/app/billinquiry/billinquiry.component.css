@@ -1,7 +1,20 @@
+<<<<<<< HEAD
 .container-fluid {
   margin: 0;
   background-color: rgba(255, 34, 98, 0.6);
   padding: 4%;
+=======
+.jumb
+{ 
+  box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
+  background-color: rgb(34, 193, 218) !important;
+}
+
+table {
+    margin: auto;
+    padding: 0;
+    width:50%;
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
 }
 .container {
   margin-left: 3%;

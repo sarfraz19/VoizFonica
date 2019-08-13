@@ -1,8 +1,14 @@
+<<<<<<< HEAD
+=======
+<div *ngIf="num!='0'">
+
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
 <div class="container-fluid jumb">
   <div class="row">
     <div class="col-md-4">
       <div class="card">
         <div class="card-horizontal">
+<<<<<<< HEAD
           <div class="card-body" style="text-align: left;">
             <label
               ><h5>{{ cus.name }}</h5></label
@@ -13,6 +19,13 @@
             <label
               ><h5>{{ cus.type1 }}</h5></label
             >
+=======
+           <div class="card-body" style="text-align: left;">
+            <label><h5>Vishnu priya</h5></label><br />
+            <label><h5>9095487632</h5></label><br />
+            <label><h5>Postpaid</h5></label>
+            
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
           </div>
           <div class="card-body" style="padding: 35px;">
             <label><h4>Balance</h4></label><br />
@@ -60,6 +73,7 @@
   <div class="row" style="padding: 20px;">
     <div class="col-md-4 text-center">
       <div class="container">
+<<<<<<< HEAD
         <font size="5">Your present pack : </font>
         <font size="5"
           ><I>{{ cus.plan }}</I></font
@@ -84,6 +98,26 @@
                 </button></a
               >
             </div>
+=======
+        <font size="5">Your present pack :</font><br />
+        <label>Info</label><br />
+        <font size="5">Expires :</font>
+        <label>5</label>
+        <div class="row">
+          <div class="col-md-6">
+            <a routerLink="/billpay">
+              <button class="btn btn2">
+                <h4>Bill<br />Payment</h4>
+              </button></a
+            >
+          </div>
+          <div class="col-md-6">
+            <a routerLink="/billinquiry">
+              <button class="btn btn2">
+                <h4>Bill<br />Inquiry</h4>
+              </button></a
+            >
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
           </div>
         </div>
       </div>
@@ -98,7 +132,7 @@
                 data-parent="#accordion"
                 href="#collapse1"
                 ><button
-                  class="btn btn-outline-primary collap"
+                  class="btn btn-outline-primary collap btn2"
                   style="width: 100%;"
                 >
                   Calls usage
@@ -135,7 +169,7 @@
                 data-toggle="collapse"
                 data-parent="#accordion"
                 href="#collapse2"
-                ><button class="btn btn-outline-primary" style="width: 100%;">
+                ><button class="btn btn-outline-primary btn2" style="width: 100%;">
                   Data usage
                 </button></a
               >
@@ -171,7 +205,7 @@
                 data-toggle="collapse"
                 data-parent="#accordion"
                 href="#collapse3"
-                ><button class="btn btn-outline-primary" style="width: 100%;">
+                ><button class="btn btn-outline-primary btn2" style="width: 100%;">
                   SMS usage
                 </button></a
               >
@@ -202,6 +236,13 @@
     </div>
   </div>
 </div>
+
+</div>
+
+<div *ngIf="num=='0'" class="container text-center display-4" style="margin-top:12%">
+    Please login to view this page
+  </div>
+  
 <script
   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

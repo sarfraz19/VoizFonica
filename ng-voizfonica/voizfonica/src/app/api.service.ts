@@ -6,14 +6,23 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class ApiService {
+<<<<<<< HEAD
   val = 0;
   changeVal(v) {
     this.val = v;
+=======
+
+  val=0;
+  changeVal(v)
+  {
+    this.val=v;  
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
   }
   getVal() {
     return this.val;
   }
 
+<<<<<<< HEAD
   private num = "9092873062";
   getNum() {
     return this.num;
@@ -57,6 +66,74 @@ export class ApiService {
     return this.http.post<any>(this.baseUrl + "users/", details, {
       headers: this.httpHeaders
     });
+=======
+  private num='0';
+  getNum()
+  {
+    console.log(localStorage.getItem("num"));
+    return localStorage.getItem("num");
+  }
+  changeNum(n)
+  {
+    this.num=n;
+    localStorage.setItem("num",this.num);
+    console.log(localStorage.getItem("num"));
+  }
+  
+
+
+  private typeOfCustomer='';
+  getType()
+  {
+    console.log(localStorage.getItem("typeOfCustomer"));
+    return localStorage.getItem("typeOfCustomer");
+  }
+  changeType(t)
+  {
+    this.typeOfCustomer=t;
+    localStorage.setItem("typeOfCustomer",this.typeOfCustomer);
+    console.log(localStorage.getItem("typeOfCustomer"));
+  }
+
+
+  private amt='0';
+  getAmt()
+  {
+    console.log(localStorage.getItem("amt"));
+    return localStorage.getItem("amt");
+  }
+  changeAmt(a)
+  {
+    this.amt=a;
+    localStorage.setItem("amt",this.amt);
+    console.log(localStorage.getItem("amt"));
+  }
+
+
+  logout()
+  {
+    this.num='0';
+    this.typeOfCustomer='';
+    localStorage.setItem("num",this.num);
+    console.log(localStorage.getItem("num"));
+    localStorage.setItem("typeOfCustomer",this.typeOfCustomer);
+    console.log(localStorage.getItem("typeOfCustomer"));
+  }
+
+
+  private baseUrl = 'http://localhost:8000/';
+  httpHeaders = new HttpHeaders({ 'content-type': 'application/json' });
+
+  constructor(private http: HttpClient) { 
+    
+}
+
+  createNewUser(n, un, pn, pw): Observable<any> {
+    const details = { username: pn, password: pw, first_name: n, last_name: un, email:pw+'@kk.in'};
+    return this.http.post<any>(this.baseUrl + 'users/', details,
+      { headers: this.httpHeaders }
+    );
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
   }
 
   checkIsCustomer(pn): Observable<any> {
@@ -102,6 +179,7 @@ export class ApiService {
     });
   }
 
+<<<<<<< HEAD
   updateCustomersBill(det, bill): Observable<any> {
     const details = {
       name: det.name,
@@ -140,16 +218,82 @@ export class ApiService {
   loginUser(authData) {
     const body = JSON.stringify(authData);
     return this.http.post(this.baseUrl + "auth/", body, {
+=======
+  login(un,pw) {
+    const details = {username:un,password:pw};
+    return this.http.post(this.baseUrl + 'auth/', details,
+    {headers: this.httpHeaders}
+    );
+  }
+
+
+  getCredit(cn):Observable<any>{
+    return this.http.get(this.baseUrl + "creditbynum/"+ cn + "/",
+    {headers: this.httpHeaders}
+    );
+  } 
+
+  changeCredit(id,cn,cvv,pin,bal):Observable<any>{
+    const detail={cardnumber: cn,
+    cvv: cvv,
+    pinnumber: pin,
+    balance: bal};
+    return this.http.put<any>(this.baseUrl + "credit/"+id+"/",detail,
+    {headers:this.httpHeaders}
+    );
+
+  }
+
+  getBank(b,an):Observable<any>{
+    return this.http.get(this.baseUrl + b + "bynum/" + an + "/",
+    {headers: this.httpHeaders}
+    );
+  }
+
+  changeBank(b,id,an,pw,bal):Observable<any>{
+    const detail={accountnumber:an,password:pw,balance:bal};
+    return this.http.put<any>(this.baseUrl + b + "/" + id + "/",detail,
+    {headers:this.httpHeaders}
+    );
+  }
+
+  postComplaint(c):Observable<any>
+  {
+    const details={phone_num:this.getNum(),msg:c};
+    return this.http.post<any>(this.baseUrl + "complaint/",details,
+    {headers: this.httpHeaders}
+    );
+  }
+
+  getFaqs():Observable<any>
+  {
+    return this.http.get(this.baseUrl + "faq/",
+    {headers:this.httpHeaders}
+    );
+  }
+
+
+
+  getPrepaid(): Observable<any> {
+    return this.http.get(this.baseUrl + "prepaid/", {
       headers: this.httpHeaders
     });
   }
 
-  getPlans(): Observable<any> {
-    return this.http.get(this.baseUrl + "plan/", {
+  getPostpaid(): Observable<any> {
+    return this.http.get(this.baseUrl + "postpaid/", {
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
       headers: this.httpHeaders
     });
   }
 
+  getDongle(): Observable<any> {
+    return this.http.get(this.baseUrl + "dongle/", {
+      headers: this.httpHeaders
+    });
+  }
+
+<<<<<<< HEAD
   getDetails(): Observable<any> {
     return this.http.get(this.baseUrl + "array/", {
       headers: this.httpHeaders
@@ -173,6 +317,8 @@ export class ApiService {
       headers: this.httpHeaders
     });
   }
+=======
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
   // getOnlineUsers():Observable<any>
   // {
   //   return this.http.get<any>(this.baseUrl+'onlineusers/',

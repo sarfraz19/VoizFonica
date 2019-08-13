@@ -11,6 +11,8 @@ export class CreateaccountComponent implements OnInit {
   // onlineusers =[];
   // selected_ou={name:'',phone_num:'',pw:'',retype_pw:''};
 
+  count=0;
+
   var1="hi";
   isBtnClicked=false;
 
@@ -55,15 +57,23 @@ export class CreateaccountComponent implements OnInit {
     }
 
     this.apiService.checkIsCustomer(this.phone_num_var).subscribe(
-      data=>(this.isCustomer=true,this.customer=data),
+      data=>(this.isCustomer=true,this.customer=data,this.check1()),
       error=>(this.isCustomer=false)
       );
 
+    return true;
+  }
+
+  check1()
+  {
     this.apiService.checkUserPresent(this.phone_num_var).subscribe(
       data=>(this.isAlreadyPresent=true),
-      error=>(this.isAlreadyPresent=false)
+      error=>(this.isAlreadyPresent=false,this.check2())
       );
+  }
 
+  check2()
+  {
     if(this.aadhar_var_short==this.customer.aadhar)
       this.aadharMatches=true;
     else
@@ -71,17 +81,21 @@ export class CreateaccountComponent implements OnInit {
 
     this.aadharVerified=this.customer.aadhar_verified;
 
+    if(this.aadharMatches && this.aadharVerified)
+      this.check3();
+  }
+
+  check3()
+  {
     this.apiService.checkUserNamePresent(this.user_name_var).subscribe(
       data=>(this.userNameTaken=true),
-      error=>(this.userNameTaken=false)
+      error=>(this.userNameTaken=false,this.save())
       );
-
-     return true;
   }
 
   save(){
     this.apiService.createNewUser(this.name_var,this.user_name_var,this.phone_num_var,this.pw_var).subscribe(data=>(true));
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
   }
 
   // select(id)
@@ -172,7 +186,7 @@ export class CreateaccountComponent implements OnInit {
     {
       var str:string;
       str=num;
-      var reg=new RegExp('^[a-zA-Z0-9]{8}$');
+      var reg=new RegExp('^[a-zA-Z0-9]{8,15}$');
       return reg.test(str);
     }
     return true;

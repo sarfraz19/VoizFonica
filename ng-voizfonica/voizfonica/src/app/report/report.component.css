@@ -1,7 +1,8 @@
 .jumb
     {
         margin:0;
-        background-color:rgba(255,34,98,0.6);
+        background-color: #437ba8;
+  color:rgb(229, 233, 236);
         padding:3%;
         text-align:center;  
         box-shadow: 0 10px 20px 0 rgba(0,0,0,0.3);
@@ -20,6 +21,8 @@
 }
 .btn1
 {
+  outline:none;
+  border:none;
   width:90%; 
   min-height: 25%;  
   min-width:80px;
@@ -27,11 +30,17 @@
   padding:1% 2%;
   margin-top:0;
   margin-bottom:3%;
-  box-shadow: 0 13px 30px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 13px 10px 0 rgba(0,0,0,0.3);
   /* background-color:  #117A8B; */
-  background-color: rgba(34, 125, 185, 0.6);
+  background-color:rgb(162, 216, 235);
 }
 .container
 {
   padding:0%;
+}
+
+.btn{
+  background-color: #0f7cd6;
+  border: none;
+  color: white;
 }

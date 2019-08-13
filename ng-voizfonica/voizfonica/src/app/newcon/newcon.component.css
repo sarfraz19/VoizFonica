@@ -1,6 +1,7 @@
 .jumb {
   margin-bottom: 35px;
-  background-color: rgba(255, 34, 98, 0.6);
+  background-color: #437ba8;
+  color:rgb(229, 233, 236);
   padding: 3%;
   text-align: center;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
@@ -40,7 +41,7 @@ body {
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
-  background-color: #ff2262;
+  background-color: #0f7cd6;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -116,7 +117,7 @@ input[type="number"]:focus,
 input[type="text"]:focus,
 input[type="password"]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #ff2262;
+  border-bottom: 2px solid #0f7cd6;
 }
 
 input[type="email"]:placeholder,

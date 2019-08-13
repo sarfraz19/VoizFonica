@@ -1,7 +1,12 @@
 .jumb {
   margin-bottom: 35px;
 
+<<<<<<< HEAD
   background-color: #e40046;
+=======
+  background-color: #1970cc;
+  color:white;
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
   /* background-image: linear-gradient(to right, #fd1129, #ffea00); */
   padding: 3%;
   text-align: center;

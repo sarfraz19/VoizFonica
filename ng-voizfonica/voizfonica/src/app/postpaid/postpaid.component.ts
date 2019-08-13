@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { ApiService } from "./../api.service";
 import { Component, OnInit } from "@angular/core";
+=======
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
 
 @Component({
   selector: "app-postpaid",
@@ -20,9 +25,16 @@ export class PostpaidComponent implements OnInit {
       this.arrayCall = this.cus.callUsage.split(";");
       console.log(this.arrayCall);
 
+<<<<<<< HEAD
       this.arrayData = this.cus.dataUsage.split(";");
       this.arraySms = this.cus.smsUsage.split(";");
     });
+=======
+  num='0';
+  constructor(private apiService:ApiService) {this.num=this.apiService.getNum(); }
+
+  ngOnInit() {
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
   }
 
   ngOnInit() {}

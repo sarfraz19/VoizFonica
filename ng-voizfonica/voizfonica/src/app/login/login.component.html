@@ -6,23 +6,18 @@
 
     <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"> -->
     <form>
-      <span class="txt">+91</span>
-      <input type="number" style="width:70%;" placeholder="Phone Number" name="ph1" [(ngModel)]="ph_var" #ph="ngModel" required/>
+      <!-- <span class="txt">+91</span> -->
+      <input type="text" placeholder="Phone Number / Username" name="poru1" [(ngModel)]="poru_var" #poru="ngModel" required/>
 
-      <div *ngIf="ph.invalid && (ph.dirty || ph.touched || isBtnClicked)" class="text-danger">
+      <div *ngIf="poru.invalid && (poru.dirty || poru.touched || isBtnClicked)" class="text-danger">
 
-        <div *ngIf="ph.errors.required">
-         Phone number is required
+        <div *ngIf="poru.errors.required">
+         Phone number / Username is required
         </div>
 
       </div>
-
-      <div *ngIf="(ph.touched || isBtnClicked) && !phone_num_match(ph_var)" class="text-danger">
-        Enter a valid phone number
-      </div>
-
-      <div *ngIf="!isUser" class="text-danger">
-        You do not have an online account
+      <div *ngIf="(poru.touched || isBtnClicked) && !phone_or_username_match(poru_var)" class="text-danger">
+        Enter a valid phone number / username
       </div>
 
       <input type="password" placeholder="Password" name="pw1" [(ngModel)]="pw_var" #pw="ngModel" required/>
@@ -35,14 +30,16 @@
 
       </div>
       
-      <div *ngIf="pw_var=='null' && (pw.touched || isBtnClicked)" class="text-danger">
-        Password is wrong
-      </div>
-
       <br /><br />
 
       <!-- <a routerLink="/prepaid"> -->
         <input type="button" class="btn" (click)="check()" value="Login" id="loginBtn"/>
+        <div *ngIf="!isUser" class="alert alert-danger">
+          You do not have an online account<br>Please sign up
+        </div>
+        <div *ngIf="isUser && !passCrct" class="alert alert-danger">
+          Password is wrong
+        </div>
       <!-- </a> -->
 
       <div class="modal fade" id="myModal">

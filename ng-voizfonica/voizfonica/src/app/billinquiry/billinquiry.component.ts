@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { ApiService } from "./../api.service";
 import { Component, OnInit } from "@angular/core";
+=======
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
 
 @Component({
   selector: "app-billinquiry",
@@ -7,6 +12,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./billinquiry.component.css"]
 })
 export class BillinquiryComponent implements OnInit {
+<<<<<<< HEAD
   bill_details: any[];
   bill: any;
   var1: string;
@@ -24,6 +30,12 @@ export class BillinquiryComponent implements OnInit {
       console.log(this.bill[0].substring(77, 78));
     });
   }
+=======
+bill_details:any[];
+
+num='0';
+constructor(private apiService:ApiService) {this.num=this.apiService.getNum(); }
+>>>>>>> 7b29146fdd06eb76ada71ea5de0e239789d116c4
 
   ngOnInit() {
     /*comment1*/

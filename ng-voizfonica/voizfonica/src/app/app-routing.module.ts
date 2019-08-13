@@ -1,7 +1,7 @@
 import { DongleComponent } from "./dongle/dongle.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
+import { Home1Component } from "./home1/home1.component";
 import { LoginComponent } from "./login/login.component";
 import { PrepaidComponent } from "./prepaid/prepaid.component";
 import { PostpaidComponent } from "./postpaid/postpaid.component";
@@ -19,7 +19,7 @@ import { from } from "rxjs";
 import { TestComponent } from "./test/test.component";
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
+  { path: "home", component: Home1Component },
   { path: "login", component: LoginComponent },
   { path: "prepaid", component: PrepaidComponent },
   { path: "postpaid", component: PostpaidComponent },
