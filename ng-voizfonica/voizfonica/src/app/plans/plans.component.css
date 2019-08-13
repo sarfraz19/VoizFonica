@@ -1,11 +1,11 @@
 .jumb {
   margin-bottom: 35px;
 
-  background-color: #e40046;
+  background-color: #1970cc;
+  color:white;
   /* background-image: linear-gradient(to right, #fd1129, #ffea00); */
   padding: 3%;
   text-align: center;
-  color: white;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
 }
 .smart {
